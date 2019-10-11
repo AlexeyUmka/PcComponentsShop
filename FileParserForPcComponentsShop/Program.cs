@@ -15,8 +15,11 @@ namespace FileParserForPcComponentsShop
             while (!sr.EndOfStream)
             {
                 line = sr.ReadLine();
-                if (line.Contains("name:"))
-                Console.WriteLine(line);
+                if (line.Contains("name: "))
+                {
+                    string name = line.Substring(line.IndexOf(':')+2, line.IndexOf(',')-line.IndexOf(':')-2);
+                    Console.WriteLine(name);
+                }
             }
         }
         static void Main(string[] args)
@@ -25,7 +28,7 @@ namespace FileParserForPcComponentsShop
             StreamReader sr = new StreamReader(path, Encoding.Default);
             FirstPartParser(sr, 5);
             sr.Close();
-            
+
             Console.ReadLine();
         }
     }
