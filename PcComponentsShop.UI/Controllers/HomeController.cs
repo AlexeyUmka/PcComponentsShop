@@ -17,7 +17,7 @@ namespace PcComponentsShop.UI.Controllers
         }
         public ActionResult Index()
         {
-            return View(PcComponentsUnit.ComputerСases.GetElement(1));
+            return View();
         }
 
         public ActionResult About()

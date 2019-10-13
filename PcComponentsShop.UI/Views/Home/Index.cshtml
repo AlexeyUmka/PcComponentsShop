@@ -1,37 +1,65 @@
-﻿@model PcComponentsShop.Domain.Core.Basic_Models.ComputerCase
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
-<p>@Model.FullName</p>
-<p>@Model.FormFactor</p>
-<p>@Model.Price+UAN</p>
-<p>@Model.PowerSupply</p>
-<p>@Model.ID</p>
-<p>@Model.MaxCpuCoolerHeight</p>
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="header-h1 header-h1-center">
+    <h1>Выберите категорию</h1>
 </div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="card-columns align-self-center categories text-center">
+    <div class="card">
+        <img class="card-img-top" src="https://pngicon.ru/file/uploads/processor.png" alt="Card image">
+        <a href="/Catalog/Processors" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Процессоры</span>
+            </div>
+        </a>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="card">
+        <img class="card-img-top" src="https://pngicon.ru/file/uploads/materinskaja-plata.png" alt="Card image">
+        <a href="/Catalog/Motherboards" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Материнские платы</span>
+            </div>
+        </a>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <div class="card">
+        <img class="card-img-top" src="https://hyperpc.ru/images/company/news/nvidia-titan-v/content/nvidia-titan-v-shroud-td.png" alt="Card image">
+        <a href="/Catalog/VideoCards" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Видеокарты</span>
+            </div>
+        </a>
     </div>
+    <div class="card">
+        <img class="card-img-top" src="https://pcshop.ua/image/cache/catalog/tovar/1153782-1024x768.jpg" alt="Card image">
+        <a href="/Catalog/MemoryModules" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Модули памяти</span>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="https://cdn1.technopark.ru/technopark/photos_resized/product/600_600/115879/1_115879.jpg" alt="Card image">
+        <a href="/Catalog/ComputerCases" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Корпуса</span>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="https://avatars.mds.yandex.net/get-mpic/1669769/img_id6867556577989292145.png/9hq" alt="Card image">
+        <a href="/Catalog/PowerSupplies" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Блоки питания</span>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        <img class="card-img-top" src="http://icons.iconarchive.com/icons/thvg/slick-drives/512/SSD-Drive-icon.png" alt="Card image">
+        <a href="/Catalog/SSDDrives" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">SSD Накопители</span>
+            </div>
+        </a>
+    </div>
+    
 </div>

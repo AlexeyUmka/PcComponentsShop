@@ -52,7 +52,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ComputerСaseRepository.cs" />
     <Compile Include="Repositories\MemoryModuleRepository.cs" />
+    <Compile Include="Repositories\MotherboardRepository.cs" />
     <Compile Include="Repositories\PcComponentsRepository.cs" />
+    <Compile Include="Repositories\PowerSupplyRepository.cs" />
+    <Compile Include="Repositories\ProcessorRepository.cs" />
+    <Compile Include="Repositories\SSDDriveRepository.cs" />
+    <Compile Include="Repositories\VideoCardRepository.cs" />
     <Compile Include="Units\PcComponentsUnit.cs" />
   </ItemGroup>
   <ItemGroup>

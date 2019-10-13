@@ -14,12 +14,9 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Required]
         public string FormFactor { get; set; }
         [Required]
-        public bool PowerSupply { get; set; }
-        [Required]
+        public string PowerSupply { get; set; }
         public string Features { get; set; }
-        [Required]
         public int MaxCpuCoolerHeight { get; set; }
-        [Required]
         public int MaxVideoCardLength { get; set; }
     }
 }

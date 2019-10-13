@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PcComponentsShop.Domain.Core.Basic_Models
 {
-    public abstract class Good
+    public class Good
     {
         [Key]
         public virtual int ID { get; set; }

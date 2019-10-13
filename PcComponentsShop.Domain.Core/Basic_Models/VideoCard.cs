@@ -13,7 +13,6 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         public string Interface { get; set; }
         [Required]
         public int CoreFrequency { get; set; }
-        [Required]
         public int CoreFrequencyBoost { get; set; }
         [Required]
         public int MemoryFrequency { get; set; }

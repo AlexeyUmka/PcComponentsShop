@@ -9,13 +9,14 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
 {
     public class SSDDrive : Good
     {
-        [Required]
         public string CellMemoryType { get; set; }
-        [Required]
-        public float Capacity { get; set; }
-        [Required]
+        
+        public string Capacity { get; set; }
+
+        public string FormFactor { get; set; }
+        
         public string ConnectionInterface { get; set; }
-        [Required]
+        
         public string ReadingSpeed { get; set; }
     }
 }

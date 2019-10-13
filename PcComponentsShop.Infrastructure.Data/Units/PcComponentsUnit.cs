@@ -13,6 +13,11 @@ namespace PcComponentsShop.Infrastructure.Data.Units
         private PcComponentsContext db = new PcComponentsContext();
         private ComputerСaseRepository computerСaseRepository;
         private MemoryModuleRepository memoryModuleRepository;
+        private MotherboardRepository motherboardRepository;
+        private PowerSupplyRepository powerSupplyRepository;
+        private ProcessorRepository processorRepository;
+        private SSDDriveRepository sSDDriveRepository;
+        private VideoCardRepository videoCardRepository;
         
         public ComputerСaseRepository ComputerСases
         {
@@ -32,6 +37,52 @@ namespace PcComponentsShop.Infrastructure.Data.Units
                 return memoryModuleRepository;
             }
         }
+        public MotherboardRepository Motherboards
+        {
+            get
+            {
+                if (motherboardRepository == null)
+                    motherboardRepository = new MotherboardRepository(db, db.Motherboards);
+                return motherboardRepository;
+            }
+        }
+        public PowerSupplyRepository PowerSupplies
+        {
+            get
+            {
+                if (powerSupplyRepository == null)
+                    powerSupplyRepository = new PowerSupplyRepository(db, db.PowerSuppliess);
+                return powerSupplyRepository;
+            }
+        }
+        public ProcessorRepository Processors
+        {
+            get
+            {
+                if (processorRepository == null)
+                    processorRepository = new ProcessorRepository(db, db.Processors);
+                return processorRepository;
+            }
+        }
+        public SSDDriveRepository SSDDrives
+        {
+            get
+            {
+                if (sSDDriveRepository == null)
+                    sSDDriveRepository = new SSDDriveRepository(db, db.SSDDrives);
+                return sSDDriveRepository;
+            }
+        }
+        public VideoCardRepository VideoCards
+        {
+            get
+            {
+                if (videoCardRepository == null)
+                    videoCardRepository = new VideoCardRepository(db, db.VideoCards);
+                return videoCardRepository;
+            }
+        }
+
         public void Save()
         {
             db.SaveChanges();
