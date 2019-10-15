@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Domain.Interfaces.Basic_Interfaces;
+using PcComponentsShop.Domain.Interfaces.Extended_Interfaces;
 using PcComponentsShop.Infrastructure.Data.Contexts;
 using System.Data.Entity;
 
 namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
-    public abstract class PcComponentsRepository<T> : IRepository<T> where T:class
+    public abstract class PcComponentsRepository<T> : IFilteredPcComponentsRepository<T> where T:Good
     {
-        protected PcComponentsContext db;
+        protected PcComponentsShopContext db;
         protected DbSet<T> table;
 
-        public PcComponentsRepository(PcComponentsContext context, DbSet<T> table)
+        public PcComponentsRepository(PcComponentsShopContext context, DbSet<T> table)
         {
             this.db = context;
             this.table = table;
@@ -39,6 +41,10 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
         public virtual IEnumerable<T> GetAll()
         {
             return table;
+        }
+        public virtual IEnumerable<Good> GetAll(IPcComponentsRepositoryFilter repositoryFIlter)
+        {
+            return repositoryFIlter.ExecuteAndReturn(table);
         }
 
         public virtual void Update(T item)

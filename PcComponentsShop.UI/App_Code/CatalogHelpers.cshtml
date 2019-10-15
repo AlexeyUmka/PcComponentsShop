@@ -10,15 +10,40 @@
                         <h4 class="card-title">@g.FullName</h4>
                         Производитель: <b>@g.Brand</b>
                         <p class="card-text goodBuyPrice">@g.Price Грн</p>
-                        <a href="#" class="btn btn-success goodBuyButton">Buy<i class="fa fa-shopping-basket"></i></a>
+                        <a href="#" class="btn btn-success goodBuyButton">В корзину<i class="fa fa-shopping-basket"></i></a>
                     </div>
                 </div>
             </div>
         }
     </div>
 }
-@helper ShowComputerCase(PcComponentsShop.Domain.Core.Basic_Models.Good good)
+@helper GetBrandCheckBox(IEnumerable<PcComponentsShop.Domain.Core.Basic_Models.Good> goods, string checkedBrands = "no")
 {
-PcComponentsShop.Domain.Core.Basic_Models.ComputerCase computerCase = (PcComponentsShop.Domain.Core.Basic_Models.ComputerCase)good;
-    <p>@computerCase.FormFactor</p>
+List<string> strs = new List<string>();
+foreach (PcComponentsShop.Domain.Core.Basic_Models.Good g in goods)
+{
+    strs.Add(g.Brand);
+}
+strs = strs.Distinct().ToList();
+foreach (string s in strs)
+{
+    if (checkedBrands == "no")
+    {
+        <label class="form-check-label w-100">
+            <input class="form-check-input" type="checkbox" value="@s" name="Brands" checked>@s
+        </label>
+    }
+    else if (checkedBrands.Contains(s))
+    {
+        <label class="form-check-label w-100">
+            <input class="form-check-input" type="checkbox" value="@s" name="Brands" checked>@s
+        </label>
+    }
+    else
+    {
+        <label class="form-check-label w-100">
+            <input class="form-check-input" type="checkbox" value="@s" name="Brands">@s
+        </label>
+    }
+}
 }

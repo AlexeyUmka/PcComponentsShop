@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class ProcessorRepository : PcComponentsRepository<Processor>
     {
-        public ProcessorRepository(PcComponentsContext context, DbSet<Processor> table)
+        public ProcessorRepository(PcComponentsShopContext context, DbSet<Processor> table)
             : base(context, table)
         { }
     }

@@ -9,15 +9,15 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
 {
     public class PowerSupply : Good
     {
-        
-        public string FormFactor { get; set; }
-       
-        public int Power { get; set; }
-        
-        public string Certification { get; set; }
-        
-        public string Cooling { get; set; }
-        
-        public string Features { get; set; }
+        [Required]
+        public string FormFactor { get; set; } = "no information";
+        [Required]
+        public int Power { get; set; }= 0;
+        [Required]
+        public string Certification { get; set; }= "no information";
+        [Required]
+        public string Cooling { get; set; }= "no information";
+        [Required]
+        public string Features { get; set; }= "no information";
     }
 }

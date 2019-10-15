@@ -42,11 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Basic_Interfaces\IRepositoryFIlter.cs" />
     <Compile Include="Basic_Interfaces\IRepository.cs" />
+    <Compile Include="Extended_Interfaces\IFilteredPcComponentsRepository.cs" />
+    <Compile Include="Extended_Interfaces\IPcComponentsRepositoryFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PcComponentsShop.Domain.Core\PcComponentsShop.Domain.Core.csproj">
+      <Project>{6d5c0467-b518-42f0-a20f-b70132021302}</Project>
+      <Name>PcComponentsShop.Domain.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

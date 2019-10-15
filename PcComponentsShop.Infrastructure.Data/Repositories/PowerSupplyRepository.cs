@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class PowerSupplyRepository : PcComponentsRepository<PowerSupply>
     {
-        public PowerSupplyRepository(PcComponentsContext context, DbSet<PowerSupply> table)
+        public PowerSupplyRepository(PcComponentsShopContext context, DbSet<PowerSupply> table)
             : base(context, table)
         { }
     }

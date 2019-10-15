@@ -10,7 +10,7 @@ namespace PcComponentsShop.Infrastructure.Data.Units
 {
     public class PcComponentsUnit : IDisposable
     {
-        private PcComponentsContext db = new PcComponentsContext();
+        private PcComponentsShopContext db = new PcComponentsShopContext();
         private ComputerСaseRepository computerСaseRepository;
         private MemoryModuleRepository memoryModuleRepository;
         private MotherboardRepository motherboardRepository;

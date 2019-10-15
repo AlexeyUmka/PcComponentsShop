@@ -10,28 +10,8 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
-                </div>
-            </div>
-        </div>*@
-    <nav class="navbar navbar-expand-md bg-dark navbar-dark header">
-        <a class="navbar-brand facinateFont" href="#">PcShop</a>
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark header">
+        <a class="navbar-brand facinateFont" href="/Home/Index" id="Brand">PcShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -43,6 +23,20 @@
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="/Home/Index">Главная</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <i class="fa fa-server"></i>Категории
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Процессоры">Процессоры</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Материнские платы">Материнские платы</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Видеокарты">Видеокарты</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Корпуса">Корпуса</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Оперативная память">Оперативная память</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Блоки питания">Блоки питания</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=SSD диски">SSD диски</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
@@ -62,12 +56,12 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My PcShop All rights are not reserved XD </p>
+            <p>&copy; @DateTime.Now.Year - My PcShop All rights are not reserved XD <a href="#Brand" class="smooth">Spice</a></p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/SmoothScroll.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

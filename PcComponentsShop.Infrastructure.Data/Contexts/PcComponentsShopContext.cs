@@ -9,7 +9,7 @@ using System.IO;
 
 namespace PcComponentsShop.Infrastructure.Data.Contexts
 {
-    public class PcComponentsContext : DbContext
+    public class PcComponentsShopContext : DbContext
     {
         public DbSet<ComputerCase> ComputerCases { get; set; }
         public DbSet<MemoryModule> MemoryModules { get; set; }
@@ -19,9 +19,9 @@ namespace PcComponentsShop.Infrastructure.Data.Contexts
         public DbSet<SSDDrive> SSDDrives { get; set; }
         public DbSet<VideoCard> VideoCards { get; set; }
     }
-    public class ComponentsInitializer : DropCreateDatabaseAlways<PcComponentsContext>
+    public class ComponentsInitializer : DropCreateDatabaseIfModelChanges<PcComponentsShopContext>
     {
-        protected override void Seed(PcComponentsContext context)
+        protected override void Seed(PcComponentsShopContext context)
         {
             string path;
             path = @"C:\Users\Алексей\Desktop\Корпуса.txt";

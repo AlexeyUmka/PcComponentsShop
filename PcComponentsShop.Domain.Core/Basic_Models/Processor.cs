@@ -9,12 +9,18 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
 {
     public class Processor : Good
     {
-        public string Microarchitecture { get; set; }
-        public string Kernel { get; set; }
-        public string Socket { get; set; }
-        public float Frequency { get; set; }
-        public int CoreAmount { get; set; }
-        public string GraphicsCore { get; set; }
+        [Required]
+        public string Microarchitecture { get; set; } = "no information";
+        [Required]
+        public string Kernel { get; set; }= "no information";
+        [Required]
+        public string Socket { get; set; }= "no information";
+        [Required]
+        public float Frequency { get; set; } = 0;
+        [Required]
+        public int CoreAmount { get; set; } = 0;
+        [Required]
+        public string GraphicsCore { get; set; }= "no information";
        
     }
 }

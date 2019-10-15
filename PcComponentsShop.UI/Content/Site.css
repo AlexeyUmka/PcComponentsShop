@@ -25,8 +25,8 @@
     .header-h1::after {
         content: "";
         position: absolute;
-        border-top: 2px solid #CED248;
-        border-bottom: 2px solid #CED248;
+        border-top: 2px solid #28A745;
+        border-bottom: 2px solid #28A745;
         height: .375rem;
         left: 0;
         top: 50%;
@@ -36,7 +36,7 @@
     }
     .header-h1 h1 {
         font-size: 1.5rem;
-        color: #9F9C07;
+        color: #28A745;
         display: inline-block;
         background: #fff;
         margin-bottom: 0;
@@ -93,7 +93,6 @@ a.categoryButton {
 }
 .categoryButton > div {
     margin: 0 auto;
-    border: 1px solid #CED248;
 }
     .categoryButton > div > span {
         background-color: #28A745;
@@ -101,6 +100,9 @@ a.categoryButton {
         border-radius: 10px;
     }
 /*CATALOG*/
+.filters{
+    margin: 15px;
+}
 .goodBuyPrice {
     background-color: #F3F5E1;
     color: #479600;
@@ -119,9 +121,6 @@ a.categoryButton {
 .goodCard .card-body {
     padding: 0;
     margin: 0 0 40px 0;
-}
-.goodCard {
-    border: 1px solid #CED248;
 }
 .goodCard .card-body h4{
     font-size: 1em;

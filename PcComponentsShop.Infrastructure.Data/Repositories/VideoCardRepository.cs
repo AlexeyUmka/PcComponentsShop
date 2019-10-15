@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class VideoCardRepository : PcComponentsRepository<VideoCard>
     {
-        public VideoCardRepository(PcComponentsContext context, DbSet<VideoCard> table)
+        public VideoCardRepository(PcComponentsShopContext context, DbSet<VideoCard> table)
             : base(context, table)
         { }
     }

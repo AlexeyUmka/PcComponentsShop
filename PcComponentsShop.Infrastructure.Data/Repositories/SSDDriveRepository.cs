@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class SSDDriveRepository : PcComponentsRepository<SSDDrive>
     {
-        public SSDDriveRepository(PcComponentsContext context, DbSet<SSDDrive> table)
+        public SSDDriveRepository(PcComponentsShopContext context, DbSet<SSDDrive> table)
             : base(context, table)
         { }
     }
