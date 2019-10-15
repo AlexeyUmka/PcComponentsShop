@@ -10,13 +10,14 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
     public class VideoCard : Good
     {
         [Required]
-        public string Interface { get; set; }
+        public string Interface { get; set; } = "no information";
         [Required]
-        public int CoreFrequency { get; set; }
-        public int CoreFrequencyBoost { get; set; }
+        public int CoreFrequency { get; set; } = 0;
         [Required]
-        public int MemoryFrequency { get; set; }
+        public int CoreFrequencyBoost { get; set; } = 0;
         [Required]
-        public string Connectors { get; set; }
+        public int MemoryFrequency { get; set; } = 0;
+        [Required]
+        public string Connectors { get; set; } = "no information";
     }
 }

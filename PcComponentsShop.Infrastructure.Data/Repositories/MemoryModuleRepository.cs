@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class MemoryModuleRepository : PcComponentsRepository<MemoryModule>
     {
-        public MemoryModuleRepository(PcComponentsContext context, DbSet<MemoryModule> table)
+        public MemoryModuleRepository(PcComponentsShopContext context, DbSet<MemoryModule> table)
             : base(context, table)
         { }
     }

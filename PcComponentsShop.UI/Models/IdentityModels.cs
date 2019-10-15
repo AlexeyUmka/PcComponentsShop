@@ -21,7 +21,7 @@ namespace PcComponentsShop.UI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("PcComponentsShopContext", throwIfV1Schema: false)
         {
         }
 

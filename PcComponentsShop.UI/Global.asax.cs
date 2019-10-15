@@ -14,7 +14,7 @@ namespace PcComponentsShop.UI
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new ComponentsInitializer());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<PcComponentsShopContext>());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -10,14 +10,14 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
     public class Motherboard : Good
     {
         [Required]
-        public string Socket { get; set; }
+        public string Socket { get; set; } = "no information";
         [Required]
-        public string Chipset { get; set; }
+        public string Chipset { get; set; } = "no information";
         [Required]
-        public string MemorySlots { get; set; }
+        public string MemorySlots { get; set; } = "no information";
         [Required]
-        public string FormFactor { get; set; }
+        public string FormFactor { get; set; } = "no information";
         [Required]
-        public string VideoInterfaces { get; set; }
+        public string VideoInterfaces { get; set; } = "no information";
     }
 }

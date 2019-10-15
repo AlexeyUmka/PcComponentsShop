@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class ComputerСaseRepository : PcComponentsRepository<ComputerCase>
     {
-        public ComputerСaseRepository(PcComponentsContext context, DbSet<ComputerCase> table)
+        public ComputerСaseRepository(PcComponentsShopContext context, DbSet<ComputerCase> table)
             :base(context, table)
         { }
     }

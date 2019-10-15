@@ -11,7 +11,7 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
     public class MotherboardRepository : PcComponentsRepository<Motherboard>
     {
-        public MotherboardRepository(PcComponentsContext context, DbSet<Motherboard> table)
+        public MotherboardRepository(PcComponentsShopContext context, DbSet<Motherboard> table)
             : base(context, table)
         { }
     }

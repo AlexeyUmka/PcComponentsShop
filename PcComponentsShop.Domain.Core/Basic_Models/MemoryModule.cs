@@ -10,14 +10,14 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
     public class MemoryModule : Good
     {
         [Required]
-        public int MemoryCapacity { get; set; }
+        public int MemoryCapacity { get; set; } = 0;
         [Required]
-        public string MemoryType { get; set; }
-        
-        public int OperatingFrequency { get; set; }
-        
-        public float OperatingVoltage { get; set; }
-        
-        public string Timings { get; set; }
+        public string MemoryType { get; set; } = "no information";
+        [Required]
+        public int OperatingFrequency { get; set; } = 0;
+        [Required]
+        public float OperatingVoltage { get; set; } = 0;
+        [Required]
+        public string Timings { get; set; } = "no information";
     }
 }

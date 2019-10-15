@@ -247,6 +247,7 @@
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\SmoothScroll.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -294,13 +295,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Catalog\ComputerCases.cshtml" />
-    <Content Include="Views\Catalog\MemoryModules.cshtml" />
-    <Content Include="Views\Catalog\Motherboards.cshtml" />
-    <Content Include="Views\Catalog\PowerSupplies.cshtml" />
-    <Content Include="Views\Catalog\Processors.cshtml" />
-    <Content Include="Views\Catalog\SSDDrives.cshtml" />
-    <Content Include="Views\Catalog\VideoCards.cshtml" />
+    <Content Include="Views\Catalog\ComponentsCatalog.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +315,10 @@
     <ProjectReference Include="..\PcComponentsShop.Domain.Core\PcComponentsShop.Domain.Core.csproj">
       <Project>{6d5c0467-b518-42f0-a20f-b70132021302}</Project>
       <Name>PcComponentsShop.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PcComponentsShop.Domain.Interfaces\PcComponentsShop.Domain.Interfaces.csproj">
+      <Project>{f032c7c2-f8c3-4161-b1cb-91c619433c14}</Project>
+      <Name>PcComponentsShop.Domain.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\PcComponentsShop.Infrastructure.Data\PcComponentsShop.Infrastructure.Data.csproj">
       <Project>{bd029b39-2128-4839-9a27-220324c8f03a}</Project>
