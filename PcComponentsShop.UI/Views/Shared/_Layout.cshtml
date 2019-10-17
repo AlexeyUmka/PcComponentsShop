@@ -46,6 +46,11 @@
                         <a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
                         <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>
                         <a class="dropdown-item" href="#"><i class="fa fa-shopping-basket"></i>Корзина</a>
+                        @if (User.IsInRole("Administrators"))
+                        {
+                            @Html.ActionLink("Управление пользователями", "Index", "Admin", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Управление ролями", "Index", "RoleAdmin", null, new { @class = "dropdown-item" })
+                        }
                     </div>
                 </li>
             </ul>
