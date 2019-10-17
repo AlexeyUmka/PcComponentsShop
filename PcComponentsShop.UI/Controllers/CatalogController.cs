@@ -18,8 +18,10 @@ namespace PcComponentsShop.UI.Controllers
             componentsUnit = new PcComponentsUnit();
         }
         [HttpGet]
-        public ActionResult ComponentsCatalog(string[] Brands, CommonSort SortByIncreaseName = CommonSort.Нет, CommonSort SortByIncreasePrice = CommonSort.Нет, string category = "Процессоры", int? minPrice = null, int? maxPrice = null, int page = 1, int pageSize = 20)
+        public ActionResult ComponentsCatalog(string[] Brands, string returnUrl, CommonSort SortByIncreaseName = CommonSort.Нет, CommonSort SortByIncreasePrice = CommonSort.Нет, string category = "Процессоры", int? minPrice = null, int? maxPrice = null, int page = 1, int pageSize = 20)
         {
+            
+            ViewBag.returnUrl = returnUrl;
             if (Session["CurrentFilter"] == null || ((PcComponentsFilter)Session["CurrentFilter"]).Category != category)
                 Session["CurrentFilter"] = new PcComponentsFilter();
             PcComponentsFilter curFilter = new PcComponentsFilter { SortByIncreaseName = SortByIncreaseName, SortByIncreasePrice = SortByIncreasePrice, MinPrice = minPrice, MaxPrice = maxPrice, Brands = Brands, Category=category};

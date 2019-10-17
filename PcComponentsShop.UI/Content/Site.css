@@ -14,14 +14,16 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 
-.header{
+.header {
     padding-bottom: 0;
 }
+
 .header-h1 {
     margin-top: 10px;
     position: relative;
     margin-bottom: .5rem;
 }
+
     .header-h1::after {
         content: "";
         position: absolute;
@@ -34,6 +36,7 @@
         transform: translateY(-50%);
         z-index: -999;
     }
+
     .header-h1 h1 {
         font-size: 1.5rem;
         color: #28A745;
@@ -43,66 +46,81 @@
         padding-right: 1rem;
         text-transform: uppercase;
     }
-  .header-h1-center {
+
+.header-h1-center {
     text-align: center;
-  }
-  .header-h1-center h1 {
-    padding-left: 1rem;
-  }
-  .header-h1-right {
+}
+
+    .header-h1-center h1 {
+        padding-left: 1rem;
+    }
+
+.header-h1-right {
     text-align: right;
-  }
-  .header-h1-right h1 {
-    padding-left: 1rem;
-    padding-right: 0;
-  }
-.searchForm{
+}
+
+    .header-h1-right h1 {
+        padding-left: 1rem;
+        padding-right: 0;
+    }
+
+.searchForm {
     margin: 0 auto;
 }
-.searchForm > input{
-    border-radius: 10px 0 0 10px;
-    max-width: 85%;
-}
-.searchForm > button{
-    border-radius: 0 10px 10px 0;
-}
+
+    .searchForm > input {
+        border-radius: 10px 0 0 10px;
+        max-width: 85%;
+    }
+
+    .searchForm > button {
+        border-radius: 0 10px 10px 0;
+    }
+
 .facinateFont {
     font-family: 'Fascinate Inline', cursive;
 }
+
 .navbar-brand {
     font-size: 32px;
 }
 /*LOGIN PARTIAL*/
-.regStatus{
+.regStatus {
     padding: 0;
 }
-.regStatus a.nav-link{
-    padding: 0;
-}
+
+    .regStatus a.nav-link {
+        padding: 0;
+    }
 /*INDEX STYLES*/
-.categories{
+.categories {
     margin-top: 10px;
 }
-a.categoryButton:hover{
+
+a.categoryButton:hover {
     opacity: 1.0;
     transition: 1s;
 }
+
 a.categoryButton {
     color: white;
     opacity: 0.5;
 }
+
 .categoryButton > div {
     margin: 0 auto;
 }
+
     .categoryButton > div > span {
         background-color: #28A745;
         font-size: 32px;
         border-radius: 10px;
     }
 /*CATALOG*/
-.filters{
+.filters {
     margin: 15px;
 }
+
 .goodBuyPrice {
     background-color: #F3F5E1;
     color: #479600;
@@ -112,16 +130,19 @@ a.categoryButton {
     left: 0;
     bottom: 0;
 }
-.goodBuyButton{
+
+.goodBuyButton {
     position: absolute;
     right: 0;
     bottom: 0;
     margin: 5px;
 }
+
 .goodCard .card-body {
     padding: 0;
     margin: 0 0 40px 0;
 }
-.goodCard .card-body h4{
-    font-size: 1em;
-}
+
+    .goodCard .card-body h4 {
+        font-size: 1em;
+    }
