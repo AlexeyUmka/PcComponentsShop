@@ -7,13 +7,13 @@ namespace PcComponentsShop.Infrastructure.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddProducedAtFieltToGoodMigration : IMigrationMetadata
+    public sealed partial class OrdersTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddProducedAtFieltToGoodMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(OrdersTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910151339566_AddProducedAtFieltToGoodMigration"; }
+            get { return "201910191043200_OrdersTable"; }
         }
         
         string IMigrationMetadata.Source

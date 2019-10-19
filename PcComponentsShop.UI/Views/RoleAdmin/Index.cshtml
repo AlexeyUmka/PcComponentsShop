@@ -44,9 +44,18 @@
                     <td>
                         @using (Html.BeginForm("Delete", "RoleAdmin", new { id = role.Id }))
                         {
-                            @Html.ActionLink("Изменить", "Edit", new { id = role.Id },
-                                new { @class = "btn btn-info btn-sm", style= "float:left; margin-right:5px" })
-                            <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+                            if (!string.IsNullOrEmpty(ViewBag.DangerRoleName) && ViewBag.DangerRoleName == role.Name)
+                            {
+                                @Html.ActionLink("Изменить", "Edit", new { id = role.Id },
+                                             new { @class = "btn btn-info btn-sm disabled", style = "float:left; margin-right:5px" })
+                                <button class="btn btn-danger btn-sm" type="submit" disabled>Удалить</button>
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Изменить", "Edit", new { id = role.Id },
+                                        new { @class = "btn btn-info btn-sm", style = "float:left; margin-right:5px" })
+                                <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+                            }
                         }
                     </td>
                 </tr>

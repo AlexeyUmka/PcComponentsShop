@@ -2,9 +2,9 @@
 @using PcComponentsShop.UI.Helpers
 @using PcComponentsShop.Infrastructure.Data.Filters;
 @Html.ValidationSummary()
-<button data-toggle="collapse" data-target="#Filters" class="btn btn-success mb-3">Фильтры</button>
-<section class="filters collapse" id="Filters">
-    <form class="form-group" action="ComponentsCatalog" method="get">
+<button data-toggle="collapse" data-target="#Filters" class="btn btn-success position-absolute" style="opacity: 0.4; z-index: 2;"><i class="fa fa-filter fa-2x"></i></button>
+<section class="filters collapse bg-light p-2" id="Filters">
+    <form class="form-group mt-5" action="ComponentsCatalog" method="get">
         <input type="hidden" name="category" value="@Model.Category" />
         <label for="SortByIncreaseName">Имя:</label>
         @Html.DropDownList("SortByIncreaseName", new SelectList(Enum.GetValues(typeof(CommonSort))), new { id = "SortByIncreaseName", @class = "form-control" })
@@ -47,13 +47,13 @@
     </form>
 </section>
 <section class="container-fluid">
-    @CatalogHelpers.ShowGoods(Model.Goods)
+    @CatalogHelpers.ShowGoods(Model.Goods, Model.PageInfo)
 </section>
 @if (Model.PageInfo.TotalPages > 1)
 {
     <div class="row">
         <div class="col-12">
-            @Html.PageLinks(Model.PageInfo, x => Url.Action("ComponentsCatalog", new { page = x, category = Model.Category}))
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("ComponentsCatalog", new { page = x, category = Model.Category, SortByIncreasePrice = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreasePrice, SortByIncreaseName = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreaseName }))
         </div>
     </div>
 }

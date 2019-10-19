@@ -11,7 +11,7 @@ using System.Data.Entity;
 
 namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
-    public abstract class PcComponentsRepository<T> : IFilteredPcComponentsRepository<T> where T:Good
+    public  class PcComponentsRepository<T> : IFilteredPcComponentsRepository<T> where T:Good
     {
         protected PcComponentsShopContext db;
         protected DbSet<T> table;

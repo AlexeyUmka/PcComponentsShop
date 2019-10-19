@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
@@ -16,8 +17,11 @@ namespace PcComponentsShop.UI.Controllers
     [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
+        public string DangerRoleName { get; } = "Administrators";
+
         public ActionResult Index()
         {
+            ViewBag.DangerRoleId = GetDangerRoleId(RoleManager.Roles);
             return View(UserManager.Users);
         }
         public ActionResult Create()
@@ -49,8 +53,8 @@ namespace PcComponentsShop.UI.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             AppUser user = await UserManager.FindByIdAsync(id);
-
-            if (user != null)
+            
+            if (user != null && !IsTryToDeleteAdmin(user))
             {
                 IdentityResult result = await UserManager.DeleteAsync(user);
                 if (result.Succeeded)
@@ -64,7 +68,7 @@ namespace PcComponentsShop.UI.Controllers
             }
             else
             {
-                return View("Error", new string[] { "Пользователь не найден" });
+                return View("Error", new string[] { "Пользователь не найден, либо его невозможно удалить" });
             }
         }
         public async Task<ActionResult> Edit(string id)
@@ -150,6 +154,23 @@ namespace PcComponentsShop.UI.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+        private bool IsTryToDeleteAdmin(AppUser user)
+        {
+            foreach (var role in RoleManager.Roles)
+                if (role.Name == DangerRoleName)
+                    foreach (var u in role.Users)
+                        if (u.UserId == user.Id)
+                            return true;
+            return false;
+        }
+        private string GetDangerRoleId(IEnumerable<AppRole> roles)
+        {
+            foreach (var role in roles)
+                if (role.Name == DangerRoleName)
+                    return role.Id;
+            return "";
+        }
         private AppUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+        private AppRoleManager RoleManager => HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
     }
 }

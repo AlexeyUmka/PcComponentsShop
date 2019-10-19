@@ -1,0 +1,25 @@
+﻿@model IEnumerable<PcComponentsShop.Infrastructure.Business.Basic_Models.Order>
+@foreach (var o in Model)
+{
+    <section class="row">
+        <div class="col-md-4">
+            <img src="@o.GoodImgSrc" alt="Good Image" />
+        </div>
+        <div class="col-md-8 bg-light shopBasketButtonGroup">
+            <input type="hidden" name="id" value="@o.GoodId" />
+            <input type="hidden" name="category" value="@o.GoodCategory" />
+            <input type="hidden" name="actionName" value="ShopBasket" />
+            <input type="hidden" name="controllerName" value="Home" />
+            <div class="bg-primary text-white rounded w-25 m-auto text-center">Цена: @o.GoodPrice Грн</div>
+            @{
+                string color, word;
+                PcComponentsShop.UI.Helpers.OrderHelpers.GetOrderWordAndColor(o.OrderStatus, out word, out color);
+            }
+            <div class="@color rounded text-white">
+                Статус заказа: @word
+            </div>
+        </div>
+    </section>
+    <hr />
+}
+

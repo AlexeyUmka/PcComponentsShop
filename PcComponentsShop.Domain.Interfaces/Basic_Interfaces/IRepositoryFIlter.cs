@@ -9,6 +9,6 @@ namespace PcComponentsShop.Domain.Interfaces.Basic_Interfaces
 {
     public interface IRepositoryFIlter<TElementsType> where TElementsType:class
     {
-        IEnumerable<TElementsType> ExecuteAndReturn(IEnumerable<TElementsType> elelments);
+        IEnumerable<TElementsType> ExecuteAndReturn(IQueryable<TElementsType> elelments);
     }
 }

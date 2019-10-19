@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 using PcComponentsShop.Domain.Core.Basic_Models;
 using System.IO;
+using PcComponentsShop.Infrastructure.Business.Basic_Models;
 
 namespace PcComponentsShop.Infrastructure.Data.Contexts
 {
@@ -18,6 +19,8 @@ namespace PcComponentsShop.Infrastructure.Data.Contexts
         public DbSet<Processor> Processors { get; set; }
         public DbSet<SSDDrive> SSDDrives { get; set; }
         public DbSet<VideoCard> VideoCards { get; set; }
+        //Business
+        public DbSet<Order> Orders { get; set; }
     }
     //public class ComponentsInitializer : DropCreateDatabaseIfModelChanges<PcComponentsShopContext>
     //{

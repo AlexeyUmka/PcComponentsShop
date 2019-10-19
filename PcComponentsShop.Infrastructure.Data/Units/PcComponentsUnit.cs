@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Infrastructure.Data.Contexts;
+using PcComponentsShop.Infrastructure.Data.Filters;
 using PcComponentsShop.Infrastructure.Data.Repositories;
+using PcComponentsShop.Infrastructure.Data.Repositories.Business;
 
 namespace PcComponentsShop.Infrastructure.Data.Units
 {
@@ -18,7 +21,63 @@ namespace PcComponentsShop.Infrastructure.Data.Units
         private ProcessorRepository processorRepository;
         private SSDDriveRepository sSDDriveRepository;
         private VideoCardRepository videoCardRepository;
+        //Business
+        private OrderRepository orderRepository;
         
+        public IEnumerable<Good> GetGoodsDependsOnCategory(string category)
+        {
+            switch (category)
+            {
+                case "Процессоры":
+                    return Processors.GetAll();
+                case "Материнские платы":
+                    return Motherboards.GetAll();
+                case "Видеокарты":
+                    return VideoCards.GetAll();
+                case "Корпуса":
+                    return ComputerСases.GetAll();
+                case "Модули памяти":
+                    return MemoryModules.GetAll();
+                case "Блоки питания":
+                    return PowerSupplies.GetAll();
+                case "SSD диски":
+                    return SSDDrives.GetAll();
+                default:
+                    return null;
+            }
+        }
+        public IEnumerable<Good> GetGoodsDependsOnFilter(string category, PcComponentsFilter filter)
+        {
+            switch (category)
+            {
+                case "Процессоры":
+                    return Processors.GetAll(filter);
+                case "Материнские платы":
+                    return Motherboards.GetAll(filter);
+                case "Видеокарты":
+                    return VideoCards.GetAll(filter);
+                case "Корпуса":
+                    return ComputerСases.GetAll(filter);
+                case "Модули памяти":
+                    return MemoryModules.GetAll(filter);
+                case "Блоки питания":
+                    return PowerSupplies.GetAll(filter);
+                case "SSD диски":
+                    return SSDDrives.GetAll(filter);
+                default:
+                    return null;
+            }
+        }
+
+        public OrderRepository Orders
+        {
+            get
+            {
+                if (orderRepository == null)
+                    orderRepository = new OrderRepository(db);
+                return orderRepository;
+            }
+        }
         public ComputerСaseRepository ComputerСases
         {
             get

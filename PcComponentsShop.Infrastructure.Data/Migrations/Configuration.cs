@@ -10,7 +10,6 @@ namespace PcComponentsShop.Infrastructure.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "PcComponentsShop.Infrastructure.Data.Contexts.PcComponentsContext";
         }
 
         protected override void Seed(PcComponentsShop.Infrastructure.Data.Contexts.PcComponentsShopContext context)

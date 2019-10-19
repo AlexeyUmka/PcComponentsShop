@@ -7,13 +7,13 @@ namespace PcComponentsShop.Infrastructure.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class InitialBaseline : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialBaseline));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910131943104_InitialCreate"; }
+            get { return "201910191040474_InitialBaseline"; }
         }
         
         string IMigrationMetadata.Source

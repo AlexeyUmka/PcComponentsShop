@@ -21,6 +21,17 @@
         {
             foreach (AppUser user in Model)
             {
+                bool f = true;
+                if (!string.IsNullOrEmpty(ViewBag.DangerRoleId))
+                {
+                    foreach (var r in user.Roles)
+                    {
+                        if (ViewBag.DangerRoleId == r.RoleId)
+                        {
+                            f = false;
+                        }
+                    }
+                }
             <tr>
                 <td>@user.Id</td>
                 <td>@user.UserName</td>
@@ -30,7 +41,14 @@
                     {
                         @Html.ActionLink("Изменить", "Edit", new { id = user.Id },
                             new { @class = "btn btn-info btn-sm", style = "float: left; margin-right: 10px" })
+                        if (f)
+                        {
                         <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-danger btn-sm" type="submit" disabled>Удалить</button>
+                        }
                     }
                 </td>
             </tr>
