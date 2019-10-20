@@ -25,7 +25,7 @@ namespace PcComponentsShop.Infrastructure.Data.Contexts
             return new AppIdentityDbContext();
         }
     }
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    public class IdentityDbInit : CreateDatabaseIfNotExists<AppIdentityDbContext>
     {
         protected override void Seed(AppIdentityDbContext context)
         {
@@ -43,9 +43,12 @@ namespace PcComponentsShop.Infrastructure.Data.Contexts
             string email = "admin@gmail.com";
 
             if (!roleMgr.RoleExists(roleName))
-            {
                 roleMgr.Create(new AppRole(roleName));
-            }
+            
+            string userRoleName = "Users";
+
+            if (!roleMgr.RoleExists(userRoleName))
+                roleMgr.Create(new AppRole(userRoleName));
 
             AppUser user = userMgr.FindByName(userName);
             if (user == null)

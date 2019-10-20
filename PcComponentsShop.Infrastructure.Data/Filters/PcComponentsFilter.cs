@@ -27,7 +27,7 @@ namespace PcComponentsShop.Infrastructure.Data.Filters
         public string ErrorMessage { get; set; } = "";
         public string Category { get; set; }
 
-        public IEnumerable<Good> ExecuteAndReturn(IEnumerable<Good> goods)
+        public IEnumerable<Good> ExecuteAndReturn(IQueryable<Good> goods)
         {
             if (ValidateInputParameters())
             {
@@ -37,7 +37,7 @@ namespace PcComponentsShop.Infrastructure.Data.Filters
                 {
                     r.AddRange(goods.Where(g => g.Brand == s));
                 }
-                goods = r;
+                goods = r.AsQueryable();
                 switch (SortByIncreaseName)
                 {
                     case (CommonSort.Возрастание):

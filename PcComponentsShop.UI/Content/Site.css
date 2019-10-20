@@ -17,7 +17,12 @@
 .header {
     padding-bottom: 0;
 }
-
+#footer{
+    text-align:center;
+    padding-top: 10px;
+    color: white;
+    height: 50px;
+}
 .header-h1 {
     margin-top: 10px;
     position: relative;
@@ -146,3 +151,4 @@ a.categoryButton {
     .goodCard .card-body h4 {
         font-size: 1em;
     }
+/*SHOP BASKET*/

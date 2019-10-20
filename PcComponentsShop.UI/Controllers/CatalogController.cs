@@ -20,34 +20,25 @@ namespace PcComponentsShop.UI.Controllers
         [HttpGet]
         public ActionResult ComponentsCatalog(string[] Brands, string returnUrl, CommonSort SortByIncreaseName = CommonSort.Нет, CommonSort SortByIncreasePrice = CommonSort.Нет, string category = "Процессоры", int? minPrice = null, int? maxPrice = null, int page = 1, int pageSize = 20)
         {
-            
             ViewBag.returnUrl = returnUrl;
+
             if (Session["CurrentFilter"] == null || ((PcComponentsFilter)Session["CurrentFilter"]).Category != category)
                 Session["CurrentFilter"] = new PcComponentsFilter();
+
             PcComponentsFilter curFilter = new PcComponentsFilter { SortByIncreaseName = SortByIncreaseName, SortByIncreasePrice = SortByIncreasePrice, MinPrice = minPrice, MaxPrice = maxPrice, Brands = Brands, Category=category};
+
             if (curFilter.ValidateInputParameters())
                 Session["CurrentFilter"] = curFilter;
             else
                 ModelState.AddModelError("CatalogViewModel", curFilter.ErrorMessage);
-            switch (category)
-            {
-                case "Процессоры":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.Processors.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.Processors.GetAll(), category));
-                case "Материнские платы":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.Motherboards.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.Motherboards.GetAll(), category));
-                case "Видеокарты":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.VideoCards.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.VideoCards.GetAll(), category));
-                case "Корпуса":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.ComputerСases.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.ComputerСases.GetAll(), category));
-                case "Оперативная память":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.MemoryModules.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.MemoryModules.GetAll(), category));
-                case "Блоки питания":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.PowerSupplies.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.PowerSupplies.GetAll(), category));
-                case "SSD диски":
-                    return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, componentsUnit.SSDDrives.GetAll((PcComponentsFilter)Session["CurrentFilter"]), componentsUnit.SSDDrives.GetAll(), category));
-                default:
-                    return new HttpNotFoundResult();
-            }
+
+            IEnumerable<Good> allGoods = componentsUnit.GetGoodsDependsOnCategory(category) ?? new List<Good>();
+
+            IEnumerable<Good> filteredGoods = componentsUnit.GetGoodsDependsOnFilter(category,(PcComponentsFilter)Session["CurrentFilter"]) ?? new List<Good>();
+
+            if(allGoods != null && filteredGoods != null)
+                return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, filteredGoods, allGoods, category));
+            return new HttpNotFoundResult();
         }
     }
 }

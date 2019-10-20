@@ -166,11 +166,14 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderAdminController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CatalogHelpers.cs" />
     <Compile Include="Helpers\IdentityHelpers.cs" />
+    <Compile Include="Helpers\OrderHelpers.cs" />
     <Compile Include="Helpers\PagingHelpers.cs" />
     <Compile Include="Models\CatalogViewModel.cs" />
     <Compile Include="Models\Pagination\PageInfo.cs" />
@@ -270,6 +273,9 @@
     <Content Include="Views\RoleAdmin\Create.cshtml" />
     <Content Include="Views\RoleAdmin\Edit.cshtml" />
     <Content Include="Views\Account\SuccessfulRegistration.cshtml" />
+    <Content Include="Views\Home\ShopBasket.cshtml" />
+    <Content Include="Views\Home\Orders.cshtml" />
+    <Content Include="Views\OrderAdmin\Orders.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +304,10 @@
     <ProjectReference Include="..\PcComponentsShop.Infrastructure.Data\PcComponentsShop.Infrastructure.Data.csproj">
       <Project>{bd029b39-2128-4839-9a27-220324c8f03a}</Project>
       <Name>PcComponentsShop.Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PcComponentsShop.Infrastructure\PcComponentsShop.Infrastructure.Business.csproj">
+      <Project>{ECB3F854-6CCF-4D22-88BA-78AB37DD4872}</Project>
+      <Name>PcComponentsShop.Infrastructure.Business</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -16,8 +16,11 @@ namespace PcComponentsShop.UI.Controllers
     [Authorize(Roles = "Administrators")]
     public class RoleAdminController : Controller
     {
+        public string DangerRoleName { get; } = "Administrators";
+
         public ActionResult Index()
         {
+            ViewBag.DangerRoleName = DangerRoleName;
             return View(RoleManager.Roles);
         }
 
@@ -50,7 +53,7 @@ namespace PcComponentsShop.UI.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             AppRole role = await RoleManager.FindByIdAsync(id);
-            if (role != null)
+            if (role != null && role.Name != DangerRoleName)
             {
                 IdentityResult result = await RoleManager.DeleteAsync(role);
                 if (result.Succeeded)
@@ -64,33 +67,37 @@ namespace PcComponentsShop.UI.Controllers
             }
             else
             {
-                return View("Error", new string[] { "Роль не найдена" });
+                return View("Error", new string[] { "Роль не найдена, или её невозможно удалить" });
             }
         }
 
         public async Task<ActionResult> Edit(string id)
         {
             AppRole role = await RoleManager.FindByIdAsync(id);
-            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
-
-            IEnumerable<AppUser> members
-                = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
-
-            IEnumerable<AppUser> nonMembers = UserManager.Users.Except(members);
-
-            return View(new RoleEditModel
+            if (role != null && role.Name != DangerRoleName)
             {
-                Role = role,
-                Members = members,
-                NonMembers = nonMembers
-            });
+                string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+
+                IEnumerable<AppUser> members
+                    = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
+
+                IEnumerable<AppUser> nonMembers = UserManager.Users.Except(members);
+
+                return View(new RoleEditModel
+                {
+                    Role = role,
+                    Members = members,
+                    NonMembers = nonMembers
+                });
+            }
+            return View("Error", new string[] { "Роль не найдена, или её невозможно изменить" });
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(RoleModificationModel model)
         {
             IdentityResult result;
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && model.RoleName != DangerRoleName)
             {
                 foreach (string userId in model.IdsToAdd ?? new string[] { })
                 {
@@ -114,23 +121,10 @@ namespace PcComponentsShop.UI.Controllers
                 return RedirectToAction("Index");
 
             }
-            return View("Error", new string[] { "Роль не найдена" });
+            return View("Error", new string[] { "Роль не найдена, или её невозможно изменить" });
         }
-        private AppUserManager UserManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
-            }
-        }
-
-        private AppRoleManager RoleManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
-            }
-        }
+        private AppUserManager UserManager => HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+        private AppRoleManager RoleManager => HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
 
         private void AddErrorsFromResult(IdentityResult result)
         {

@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-xl bg-dark navbar-dark header">
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark header" style="z-index: 2;">
         <a class="navbar-brand facinateFont" href="/Home/Index" id="Brand">PcShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -24,6 +24,19 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/Home/Index">Главная</a>
                 </li>
+                @if (User.IsInRole("Administrators"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            <i class="fa fa-book"></i>Управление
+                        </a>
+                        <div class="dropdown-menu">
+                            @Html.ActionLink("Пользователи", "Index", "Admin", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Заказы", "Orders", "OrderAdmin", null, new { @class = "dropdown-item" })
+                            @Html.ActionLink("Роли", "Index", "RoleAdmin", null, new { @class = "dropdown-item" })
+                        </div>
+                    </li>
+                }
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         <i class="fa fa-server"></i>Категории
@@ -33,7 +46,7 @@
                         <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Материнские платы">Материнские платы</a>
                         <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Видеокарты">Видеокарты</a>
                         <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Корпуса">Корпуса</a>
-                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Оперативная память">Оперативная память</a>
+                        <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Модули памяти">Модули памяти</a>
                         <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=Блоки питания">Блоки питания</a>
                         <a class="dropdown-item" href="/Catalog/ComponentsCatalog/?category=SSD диски">SSD диски</a>
                     </div>
@@ -45,12 +58,8 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
                         <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>
-                        <a class="dropdown-item" href="#"><i class="fa fa-shopping-basket"></i>Корзина</a>
-                        @if (User.IsInRole("Administrators"))
-                        {
-                            @Html.ActionLink("Управление пользователями", "Index", "Admin", null, new { @class = "dropdown-item" })
-                            @Html.ActionLink("Управление ролями", "Index", "RoleAdmin", null, new { @class = "dropdown-item" })
-                        }
+                        <a class="dropdown-item" href="/Home/ShopBasket"><i class="fa fa-shopping-basket"></i>Корзина</a>
+                        <a class="dropdown-item" href="/Home/Orders"><i class="fa fa-first-order"></i>Ваши Заказы</a>
                     </div>
                 </li>
             </ul>
@@ -58,12 +67,18 @@
     </nav>
     @Html.Partial("_LoginPartial")
     <div class="container body-content">
-        @RenderBody()
+        <div class="float-right sticky-top mr-5" style="opacity: 0.5;z-index: 1;">
+            <a href="#Brand" class="smooth btn btn-outline-dark position-absolute"><i class="fa fa-arrow-up fa-2x"></i></a>
+            <a href="#footer" class="smooth btn btn-outline-dark position-absolute mt-5"><i class="fa fa-arrow-down fa-2x"></i></a>
+        </div>
+        <div style="min-height: 937px;">
+            @RenderBody()
+        </div>
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My PcShop All rights are not reserved XD <a href="#Brand" class="smooth">Spice</a></p>
-        </footer>
     </div>
+    <footer id="footer" class="bg-dark">
+        <p>&copy; @DateTime.Now.Year - My PcShop All rights are not reserved XD</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/SmoothScroll.js")
