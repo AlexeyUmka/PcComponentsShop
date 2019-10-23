@@ -31,6 +31,7 @@
                             <i class="fa fa-book"></i>Управление
                         </a>
                         <div class="dropdown-menu">
+                            @Html.ActionLink("Товары", "Index", "Home", null, new { @class = "dropdown-item" })
                             @Html.ActionLink("Пользователи", "Index", "Admin", null, new { @class = "dropdown-item" })
                             @Html.ActionLink("Заказы", "Orders", "OrderAdmin", null, new { @class = "dropdown-item" })
                             @Html.ActionLink("Роли", "Index", "RoleAdmin", null, new { @class = "dropdown-item" })
@@ -58,9 +59,18 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
                         <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>
-                        <a class="dropdown-item" href="/Home/ShopBasket"><i class="fa fa-shopping-basket"></i>Корзина</a>
                         <a class="dropdown-item" href="/Home/Orders"><i class="fa fa-first-order"></i>Ваши Заказы</a>
                     </div>
+                </li>
+                <li class="nav-item">
+                    @{ HttpCookie cookie = Request.Cookies["ShoppingBasket"];
+                        int? goodsInBasket = 0;
+                        if (cookie != null)
+                        {
+                            goodsInBasket = cookie["ShoppingBasket"]?.ToCharArray().Where(c => c == '+').Count();
+                        }
+                    }
+                    <a class="nav-link" href="/Home/ShopBasket"><i class="fa fa-shopping-basket fa-2x"></i><span id="shopBasketGoodsAmount" class="text-success">@goodsInBasket</span></a>
                 </li>
             </ul>
         </div>

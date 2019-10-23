@@ -18,8 +18,10 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Required]
         public string Features { get; set; } = "no information";
         [Required]
+        [Range(minimum: 1, maximum: int.MaxValue)]
         public int MaxCpuCoolerHeight { get; set; } = 0;
         [Required]
+        [Range(minimum: 1, maximum: int.MaxValue)]
         public int MaxVideoCardLength { get; set; } = 0;
     }
 }

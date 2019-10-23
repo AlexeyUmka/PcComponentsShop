@@ -21,6 +21,9 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         public virtual string Category { get; set; }
         [Required]
         public virtual string ImgSrc { get; set; }
+        [Required]
         public virtual DateTime ProducedAt { get; set; }
+        [Required]
+        public virtual string Model { get; set; }
     }
 }

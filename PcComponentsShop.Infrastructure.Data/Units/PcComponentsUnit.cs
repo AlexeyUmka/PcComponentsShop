@@ -23,7 +23,7 @@ namespace PcComponentsShop.Infrastructure.Data.Units
         private VideoCardRepository videoCardRepository;
         //Business
         private OrderRepository orderRepository;
-        
+
         public IEnumerable<Good> GetGoodsDependsOnCategory(string category)
         {
             switch (category)

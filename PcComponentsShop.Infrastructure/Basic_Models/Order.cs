@@ -36,5 +36,7 @@ namespace PcComponentsShop.Infrastructure.Business.Basic_Models
         public int GoodPrice { get; set; }
         [Required]
         public string GoodImgSrc { get; set; }
+        [DataType(DataType.DateTime)]
+        public DateTime? PaidAt { get; set; }
     }
 }

@@ -26,6 +26,11 @@ namespace PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment
         {
             AppIdentityDbContext db = context.Get<AppIdentityDbContext>();
             AppUserManager manager = new AppUserManager(new UserStore<AppUser>(db));
+
+            manager.MaxFailedAccessAttemptsBeforeLockout = 3;
+            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(1);
+            manager.UserLockoutEnabledByDefault = true;
+
             manager.PasswordValidator = new PasswordValidator
             {
                 RequiredLength = 6,

@@ -21,7 +21,7 @@ namespace PcComponentsShop.UI.Controllers
         public ActionResult Login(string returnUrl)
         {
             if (HttpContext.User.Identity.IsAuthenticated)
-                return View("Error", new string[] {"У вас недостаточно прав для выполнения данной операции"});
+                return View("Error", new string[] { "У вас недостаточно прав для выполнения данной операции" });
             ViewBag.returnUrl = returnUrl;
             return View();
         }
@@ -32,16 +32,39 @@ namespace PcComponentsShop.UI.Controllers
         public async Task<ActionResult> Login(LoginViewModel details, string returnUrl)
         {
             AppUser user = await UserManager.FindAsync(details.Name, details.Password);
-
-            if (user == null)
+            AppUser currUser = UserManager.Users.FirstOrDefault(u => u.UserName == details.Name);
+            if ((user == null) || (currUser != null && UserManager.IsLockedOut(currUser.Id)))
             {
-                ModelState.AddModelError("", "Некорректное имя или пароль.");
+                if (currUser != null)
+                {
+                    currUser.LockoutEnabled = true;
+
+                    if (UserManager.IsLockedOut(currUser.Id))
+                    {
+                        ModelState.AddModelError("", $"Ваш аккаунт заблокирован в целях безопасноти, до {currUser.LockoutEndDateUtc.Value}");
+                        UserManager.ResetAccessFailedCount(currUser.Id);
+                    }
+                    else if (UserManager.MaxFailedAccessAttemptsBeforeLockout <= currUser.AccessFailedCount+1)
+                    {
+                        currUser.LockoutEndDateUtc = DateTime.UtcNow.AddMinutes(1);
+                        await UserManager.UpdateAsync(currUser);
+                        UserManager.ResetAccessFailedCount(currUser.Id);
+                        ModelState.AddModelError("", $"Ваш аккаунт заблокирован в целях безопасноти, до {currUser.LockoutEndDateUtc.Value}");
+                    }
+                    else
+                    {
+                        UserManager.AccessFailed(currUser.Id);
+                        ModelState.AddModelError("", $"Некорректный пароль осталось {UserManager.MaxFailedAccessAttemptsBeforeLockout - UserManager.GetAccessFailedCount(currUser.Id)} попытки.");
+                    }
+                }
+                else
+                    ModelState.AddModelError("", "Некорректное имя.");
             }
             else
             {
                 ClaimsIdentity ident = await UserManager.CreateIdentityAsync(user,
                     DefaultAuthenticationTypes.ApplicationCookie);
-
+                await UserManager.ResetAccessFailedCountAsync(user.Id);
                 AuthManager.SignOut();
                 AuthManager.SignIn(new AuthenticationProperties
                 {

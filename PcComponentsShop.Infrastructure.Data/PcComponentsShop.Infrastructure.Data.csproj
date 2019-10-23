@@ -89,6 +89,18 @@
     <Compile Include="Migrations\201910191043200_OrdersTable.Designer.cs">
       <DependentUpon>201910191043200_OrdersTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201910201405088_PaidAtField.cs" />
+    <Compile Include="Migrations\201910201405088_PaidAtField.Designer.cs">
+      <DependentUpon>201910201405088_PaidAtField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910201421266_NullableDATETIME.cs" />
+    <Compile Include="Migrations\201910201421266_NullableDATETIME.Designer.cs">
+      <DependentUpon>201910201421266_NullableDATETIME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201910211146052_ModelFieldForGood.cs" />
+    <Compile Include="Migrations\201910211146052_ModelFieldForGood.Designer.cs">
+      <DependentUpon>201910211146052_ModelFieldForGood.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrationSystemManagment\AppRoleManager.cs" />
@@ -128,6 +140,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201910191043200_OrdersTable.resx">
       <DependentUpon>201910191043200_OrdersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201405088_PaidAtField.resx">
+      <DependentUpon>201910201405088_PaidAtField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910201421266_NullableDATETIME.resx">
+      <DependentUpon>201910201421266_NullableDATETIME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201910211146052_ModelFieldForGood.resx">
+      <DependentUpon>201910211146052_ModelFieldForGood.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
