@@ -3,7 +3,7 @@
 {
     <section class="row">
         <div class="col-md-4">
-            <img src="@o.GoodImgSrc" alt="Good Image" />
+            <img src="@o.GoodImgSrc" alt="Good Image" class="w-100 h-auto"/>
         </div>
         <div class="col-md-8 bg-light shopBasketButtonGroup">
             <input type="hidden" name="id" value="@o.GoodId" />
@@ -21,19 +21,23 @@
             </div>
             @if (o.OrderStatus == "Registered")
             {
-            <form action="ChangeOrderStatus" method="post">
-                <input type="hidden" name="orderId" value="@o.OrderId" />
-                <select class="form-control" name="newStatus">
-                    <option selected value="No">Не менять</option>
-                    <option value="Paid">Оплачен</option>
-                    <option value="Canceled">Отменен</option>
-                </select>
-                <button type="submit" class="btn btn-outline-warning">Применить</button>
-            </form>
+                <form action="ChangeOrderStatus" method="post">
+                    <input type="hidden" name="orderId" value="@o.OrderId" />
+                    <select class="form-control" name="newStatus">
+                        <option selected value="No">Не менять</option>
+                        <option value="Paid">Оплачен</option>
+                        <option value="Canceled">Отменен</option>
+                    </select>
+                    <button type="submit" class="btn btn-outline-warning">Применить</button>
+                </form>
             }
             else
             {
                 <p>Статус заказа невозможно поменять</p>
+            }
+            @if (o.OrderStatus == "Paid")
+            {
+                <p>Оплачено: @o.PaidAt</p>
             }
         </div>
     </section>

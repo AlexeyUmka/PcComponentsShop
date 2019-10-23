@@ -21,9 +21,20 @@
                         else
                         {
                             <input type="hidden" name="isRemoveFromBasket" value="true" />
-                            <button type="submit" class="btn btn-danger goodBuyButton">Убрать<i class="fa fa-remove"></i></button>
+                            <button type="submit" class="btn btn-warning goodBuyButton">Убрать<i class="fa fa-remove"></i></button>
                         }
                     </form>
+                    @if (User.IsInRole("Administrators"))
+                    {
+                    <form action="/CatalogAdmin/ChangeOrDeleteGood" method="post">
+                        <input type="hidden" name="page" value="@pageInfo.PageNumber" />
+                        <input type="hidden" name="pageSize" value="@pageInfo.PageSize" />
+                        <input type="hidden" name="goodId" value="@g.ID" />
+                        <input type="hidden" name="category" value="@g.Category" />
+                        <button type="submit" name="IsDeleteGood" value="true" class="btn btn-sm btn-danger position-absolute" style="bottom: 80%; left: 70%;">Удалить</button>
+                        <button type="submit" name="IsChangeGood" value="true" class="btn btn-sm btn-primary position-absolute" style="bottom: 90%; left: 70%;">Изменить</button>
+                    </form>
+                    }
                 </div>
             </div>
         </div>

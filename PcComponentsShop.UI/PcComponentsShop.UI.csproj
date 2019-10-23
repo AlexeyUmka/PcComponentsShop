@@ -164,6 +164,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CatalogAdminController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderAdminController.cs" />
@@ -276,9 +277,18 @@
     <Content Include="Views\Home\ShopBasket.cshtml" />
     <Content Include="Views\Home\Orders.cshtml" />
     <Content Include="Views\OrderAdmin\Orders.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangeProcessor.cshtml" />
+    <Content Include="Views\Shared\GoodFieldsToChangePartial.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangeSSDDrive.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangeMotherboard.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangeVideoCard.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangeMemoryModule.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangeComputerCase.cshtml" />
+    <Content Include="Views\CatalogAdmin\ChangePowerSupply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\CatalogImages\" />
     <Folder Include="Views\Manage\" />
   </ItemGroup>
   <ItemGroup>

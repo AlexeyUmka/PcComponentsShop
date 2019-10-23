@@ -12,7 +12,8 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Required]
         public string FormFactor { get; set; } = "no information";
         [Required]
-        public int Power { get; set; }= 0;
+        [Range(minimum: 1, maximum: int.MaxValue)]
+        public int Power { get; set; }= 1;
         [Required]
         public string Certification { get; set; }= "no information";
         [Required]

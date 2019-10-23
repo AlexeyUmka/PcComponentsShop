@@ -35,20 +35,42 @@ namespace PcComponentsShop.UI.Controllers
         }
 
         [Authorize(Roles = "Administrators, Users")]
-        public ActionResult CreateRegisteredOrder(int[] goodId, string[] category, int[] goodAmount, string ids=null, string ctgrs=null)
+        public ActionResult ChangeOrderStatus(int orderId, int goodAmount, bool IsPay = false, bool IsCancel = false)
         {
-            if(!string.IsNullOrEmpty(ids) && !string.IsNullOrEmpty(ctgrs))
+            if (goodAmount > 0)
+            {
+                Order o = pcComponentsUnit.Orders.GetElement(orderId);
+                if (o != null)
+                {
+                    if (IsPay)
+                    {
+                        o.OrderStatus = OrderStatus.Paid.ToString();
+                        o.PaidAt = DateTime.Now;
+                    }
+                    else if (IsCancel)
+                    {
+                        o.OrderStatus = OrderStatus.Canceled.ToString();
+                    }
+                    o.GoodAmount = goodAmount;
+                    pcComponentsUnit.Orders.Update(o);
+                    pcComponentsUnit.Save();
+                }
+            }
+            return RedirectToActionPermanent("Orders");
+        }
+        
+        [Authorize(Roles = "Administrators, Users")]
+        public ActionResult CreateRegisteredOrder(int[] goodId, string[] category, string ids = null, string ctgrs = null)
+        {
+            if (!string.IsNullOrEmpty(ids) && !string.IsNullOrEmpty(ctgrs))
             {
                 goodId = Array.ConvertAll(ids.Split(','), int.Parse);
                 category = ctgrs.Split(',');
             }
 
-            if(goodAmount==null)
-                goodAmount = new int[] { 1};
-
             int i = 0;
             OrderValidators.UserName = User.Identity.Name;
-            while (i < goodId.Length && i < category.Length)// && i < goodAmount.Length
+            while (i < goodId.Length && i < category.Length)
             {
                 OrderValidators.AllGoods = pcComponentsUnit.GetGoodsDependsOnCategory(category[i]);
 
@@ -60,7 +82,7 @@ namespace PcComponentsShop.UI.Controllers
                     Order order = OrdersManipulator.CreateAndReturnNewOrder(
                         User.Identity.Name,
                         pcComponentsUnit.GetGoodsDependsOnCategory(category[i]).FirstOrDefault(g => g.ID == goodId[i]),
-                        OrderValidators.IsValidOrder);//goodAmount: goodAmount[i]
+                        OrderValidators.IsValidOrder);
                     if (order != null)
                     {
                         pcComponentsUnit.Orders.Create(order);
@@ -71,7 +93,7 @@ namespace PcComponentsShop.UI.Controllers
                 }
                 i++;
             }
-            return View("Orders", pcComponentsUnit.Orders.GetAll().Where(o => o.UserName == User.Identity.Name));
+            return RedirectToActionPermanent("Orders");
         }
 
         public ActionResult ShopBasket()
@@ -113,7 +135,7 @@ namespace PcComponentsShop.UI.Controllers
                 cookieReq["ShoppingBasket"] += shoppingBasket.ToString();
                 Response.Cookies.Add(cookieReq);
             }
-            else if (removeSelected)
+            else if (removeSelected && selectedGoods != null)
             {
                 HttpCookie cookieReq = Request.Cookies["ShoppingBasket"];
                 if (cookieReq != null)
@@ -138,12 +160,12 @@ namespace PcComponentsShop.UI.Controllers
                     Response.Cookies.Add(cookieReq);
                 }
             }
-            else if (buySelected)
+            else if (buySelected && selectedGoods != null)
             {
                 ShoppingBasket sb = ShoppingBasket.ReadFromCookie(string.Join("", selectedGoods));
-                string ids = string.Join(",",sb.Goods.Select(g => g.ID.ToString()));
-                string ctgrs = string.Join(",",sb.Goods.Select(g => g.Category));
-                return RedirectToActionPermanent("CreateRegisteredOrder", new { ids, ctgrs});
+                string ids = string.Join(",", sb.Goods.Select(g => g.ID.ToString()));
+                string ctgrs = string.Join(",", sb.Goods.Select(g => g.Category));
+                return RedirectToActionPermanent("CreateRegisteredOrder", new { ids, ctgrs });
             }
             if (string.IsNullOrEmpty(actionName) || string.IsNullOrEmpty(controllerName))
                 return RedirectToActionPermanent("ComponentsCatalog", "Catalog", new { category, page });
