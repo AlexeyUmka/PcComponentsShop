@@ -166,6 +166,8 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CatalogAdminController.cs" />
     <Compile Include="Controllers\CatalogController.cs" />
+    <Compile Include="Controllers\ExceptionController.cs" />
+    <Compile Include="Controllers\Filters\RefuseLockedUsers.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderAdminController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
@@ -221,6 +223,7 @@
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="App_Code\CatalogHelpers.cshtml" />
+    <Content Include="App_Code\CatalogAdminHelper.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -285,6 +288,9 @@
     <Content Include="Views\CatalogAdmin\ChangeMemoryModule.cshtml" />
     <Content Include="Views\CatalogAdmin\ChangeComputerCase.cshtml" />
     <Content Include="Views\CatalogAdmin\ChangePowerSupply.cshtml" />
+    <Content Include="Views\Account\BlockInformation.cshtml" />
+    <Content Include="Views\Shared\_Exception.cshtml" />
+    <Content Include="Views\Exception\NotFoundException.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

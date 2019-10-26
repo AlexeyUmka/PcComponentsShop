@@ -12,18 +12,18 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Key]
         public virtual int ID { get; set; }
         [Required]
-        public virtual string FullName { get; set; }
+        public virtual string FullName { get; set; } = "no information";
         [Required]
-        public virtual int Price { get; set; }
+        public virtual int Price { get; set; } = 0;
         [Required]
-        public virtual string Brand { get; set; }
+        public virtual string Brand { get; set; } = "no information";
         [Required]
         public virtual string Category { get; set; }
         [Required]
-        public virtual string ImgSrc { get; set; }
+        public virtual string ImgSrc { get; set; } = "no information";
         [Required]
-        public virtual DateTime ProducedAt { get; set; }
+        public virtual DateTime ProducedAt { get; set; } = DateTime.Now;
         [Required]
-        public virtual string Model { get; set; }
+        public virtual string Model { get; set; } = "no information";
     }
 }

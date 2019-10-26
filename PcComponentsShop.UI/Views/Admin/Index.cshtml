@@ -1,5 +1,7 @@
 ﻿@using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels
+
 @model IEnumerable<AppUser>
+@Html.ValidationSummary()
 <div class="card card-columns">
     <div class="card-header w-100 text-center bg-info">
         Учетные записи
@@ -32,26 +34,50 @@
                         }
                     }
                 }
-            <tr>
-                <td>@user.Id</td>
-                <td>@user.UserName</td>
-                <td>@user.Email</td>
-                <td>
-                    @using (Html.BeginForm("Delete", "Admin", new { id = user.Id }))
-                    {
-                        @Html.ActionLink("Изменить", "Edit", new { id = user.Id },
-                            new { @class = "btn btn-info btn-sm", style = "float: left; margin-right: 10px" })
-                        if (f)
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Admin", new { id = user.Id }))
                         {
-                        <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+                            @Html.ActionLink("Изменить", "Edit", new { id = user.Id },
+                                new { @class = "btn btn-info btn-sm", style = "float: left; margin-right: 10px" })
+                            if (f)
+                            {
+                                <button class="btn btn-danger btn-sm" type="submit">Удалить</button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger btn-sm" type="submit" disabled>Удалить</button>
+                            }
                         }
-                        else
-                        {
-                            <button class="btn btn-danger btn-sm" type="submit" disabled>Удалить</button>
-                        }
-                    }
-                </td>
-            </tr>
+                        <form method="post" action="/Admin/Ban" class="form-inline">
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            @if (user.LockoutEndDateUtc < DateTime.UtcNow)
+                            {
+                                if (f)
+                                {
+                                <input type="number" min="1" value="1" name="Amount" class="form-control form-control-sm"/>
+                                <div class="form-group">
+                                    <select class="form-control form-control-sm" id="sel1" name="Dimension">
+                                        <option selected value="Минут">Минут</option>
+                                        <option value="Часов">Часов</option>
+                                        <option value="Дней">Дней</option>
+                                        <option value="Месяцев">Месяцев</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-warning btn-sm" type="submit" name="LockUser" value="true">Заблокировать</button>
+                                }
+                            }
+                            else
+                            {
+                                <p class="d-inline-block">Заблокирован до @user.LockoutEndDateUtc</p>
+                                <button class="btn btn-outline-success btn-sm" type="submit" name="UnlockUser" value="true">Разблокировать</button>
+                            }
+                        </form>
+                    </td>
+                </tr>
             }
         }
     </table>

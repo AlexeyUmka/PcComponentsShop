@@ -22,7 +22,7 @@ namespace PcComponentsShop.Infrastructure.Data.Filters
         public int? MaxPrice { get; set; }
         public CommonSort? SortByIncreaseName { get; set; }
         public CommonSort? SortByIncreasePrice { get; set; }
-        public CommonSort? SortByIncreaseDataPosted { get; set; } = CommonSort.Нет;
+        public CommonSort? SortByIncreaseProducedAt { get; set; } = CommonSort.Нет;
         public IEnumerable<string> Brands { get; set; }
         public string ErrorMessage { get; set; } = "";
         public string Category { get; set; }
@@ -57,12 +57,22 @@ namespace PcComponentsShop.Infrastructure.Data.Filters
                         goods = goods.OrderByDescending(g => g.Price);
                         break;
                 }
+
+                switch (SortByIncreaseProducedAt)
+                {
+                    case (CommonSort.Возрастание):
+                        goods = goods.OrderBy(g => g.ProducedAt);
+                        break;
+                    case (CommonSort.Убывание):
+                        goods = goods.OrderByDescending(g => g.ProducedAt);
+                        break;
+                }
             }
             return goods;
         }
         public bool ValidateInputParameters()
         {
-            if (MinPrice == null || MaxPrice == null || SortByIncreasePrice == null || SortByIncreaseName == null || SortByIncreaseDataPosted == null)
+            if (MinPrice == null || MaxPrice == null || SortByIncreasePrice == null || SortByIncreaseName == null || SortByIncreaseProducedAt == null)
                 return false;
             int c = 0;
             foreach (var v in Enum.GetNames(typeof(CommonSort)))
@@ -73,7 +83,7 @@ namespace PcComponentsShop.Infrastructure.Data.Filters
                         c++;
                     if (Enum.GetName(typeof(CommonSort), SortByIncreaseName) == v)
                         c++;
-                    if (Enum.GetName(typeof(CommonSort), SortByIncreaseDataPosted) == v)
+                    if (Enum.GetName(typeof(CommonSort), SortByIncreaseProducedAt) == v)
                         c++;
                 }
             }
