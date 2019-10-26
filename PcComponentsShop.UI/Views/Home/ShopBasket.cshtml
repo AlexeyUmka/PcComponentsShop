@@ -16,10 +16,10 @@
                 }
             }
             <section class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <img src="@g.ImgSrc" alt="Good Image" class="w-100 h-auto"/>
                 </div>
-                <div class="col-md-8 bg-light shopBasketButtonGroup">
+                <div class="col-md-10 bg-light shopBasketButtonGroup">
                     @{string goodInfo = string.Format($"{g.ID},{g.Category}+");}
                     <input type="hidden" name="id" value="@g.ID" />
                     <input type="hidden" name="category" value="@g.Category" />

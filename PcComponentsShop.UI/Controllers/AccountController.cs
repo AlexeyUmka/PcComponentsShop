@@ -4,6 +4,7 @@ using Microsoft.Owin.Security;
 using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
+using PcComponentsShop.UI.Controllers.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Web.Mvc;
 namespace PcComponentsShop.UI.Controllers
 {
     [Authorize]
+    [RefuseLockedUsers]
     public class AccountController : Controller
     {
         [AllowAnonymous]
@@ -111,6 +113,13 @@ namespace PcComponentsShop.UI.Controllers
                 }
             }
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult BlockInformation(string userId)
+        {
+            AuthManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return View(UserManager.FindById(userId));
         }
 
         private IAuthenticationManager AuthManager

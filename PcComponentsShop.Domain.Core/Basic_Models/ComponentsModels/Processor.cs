@@ -17,10 +17,10 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         public string Socket { get; set; }= "no information";
         [Required]
         [Range(minimum: 0.1f, maximum: float.MaxValue)]
-        public float Frequency { get; set; } = 0;
+        public float Frequency { get; set; } = 0.1f;
         [Required]
         [Range(minimum: 1, maximum: int.MaxValue)]
-        public int CoreAmount { get; set; } = 0;
+        public int CoreAmount { get; set; } = 1;
         [Required]
         public string GraphicsCore { get; set; }= "no information";
        

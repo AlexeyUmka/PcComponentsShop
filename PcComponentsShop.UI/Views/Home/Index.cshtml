@@ -6,6 +6,10 @@
 </div>
 <div class="card-columns align-self-center categories text-center">
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("Процессоры")
+        }
         <img class="card-img-top" src="https://pngicon.ru/file/uploads/processor.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Процессоры" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -14,6 +18,10 @@
         </a>
     </div>
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("Материнские платы")
+        }
         <img class="card-img-top" src="https://pngicon.ru/file/uploads/materinskaja-plata.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Материнские платы" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -22,6 +30,10 @@
         </a>
     </div>
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("Видеокарты")
+        }
         <img class="card-img-top" src="https://hyperpc.ru/images/company/news/nvidia-titan-v/content/nvidia-titan-v-shroud-td.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Видеокарты" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -30,6 +42,10 @@
         </a>
     </div>
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("Модули памяти")
+        }
         <img class="card-img-top" src="https://pcshop.ua/image/cache/catalog/tovar/1153782-1024x768.jpg" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Модули памяти" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -38,6 +54,10 @@
         </a>
     </div>
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("Корпуса")
+        }
         <img class="card-img-top" src="https://cdn1.technopark.ru/technopark/photos_resized/product/600_600/115879/1_115879.jpg" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Корпуса" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -46,6 +66,10 @@
         </a>
     </div>
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("Блоки питания")
+        }
         <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/05/20/11/01/computer-3415505_960_720.jpg" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Блоки питания" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -54,6 +78,10 @@
         </a>
     </div>
     <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
+            @CatalogAdminHelper.ShowCreateGoodButton("SSD диски")
+        }
         <img class="card-img-top" src="http://icons.iconarchive.com/icons/thvg/slick-drives/512/SSD-Drive-icon.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=SSD диски" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
@@ -61,5 +89,5 @@
             </div>
         </a>
     </div>
-    
+
 </div>

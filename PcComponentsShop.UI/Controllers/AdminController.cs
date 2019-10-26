@@ -53,7 +53,7 @@ namespace PcComponentsShop.UI.Controllers
         public async Task<ActionResult> Delete(string id)
         {
             AppUser user = await UserManager.FindByIdAsync(id);
-            
+
             if (user != null && !IsTryToDeleteAdmin(user))
             {
                 IdentityResult result = await UserManager.DeleteAsync(user);
@@ -88,7 +88,7 @@ namespace PcComponentsShop.UI.Controllers
         public async Task<ActionResult> Edit(string id, string email, string password, string userName)
         {
             AppUser user = await UserManager.FindByIdAsync(id);
-            
+
             if (user != null)
             {
                 user.Email = email;
@@ -104,7 +104,7 @@ namespace PcComponentsShop.UI.Controllers
                 IdentityResult validName
                     = await UserManager.UserValidator.ValidateAsync(user);
 
-                if(!validName.Succeeded)
+                if (!validName.Succeeded)
                 {
                     AddErrorsFromResult(validName);
                 }
@@ -145,6 +145,54 @@ namespace PcComponentsShop.UI.Controllers
                 ModelState.AddModelError("", "Пользователь не найден");
             }
             return View(user);
+        }
+        [HttpPost]
+        public ActionResult Ban(string userId, bool LockUser = false, bool UnlockUser = false, int Amount = 0, string Dimension = "")
+        {
+            AppUser user = UserManager.FindById(userId);
+            if (!IsTryToDeleteAdmin(user))
+            {
+                if (UnlockUser && UserManager.IsLockedOut(userId))
+                {
+                    UserManager.SetLockoutEndDate(userId, DateTimeOffset.UtcNow);
+                }
+                else if (LockUser && Amount > 0 && !string.IsNullOrEmpty(Dimension))
+                {
+                    bool f = true;
+                    DateTimeOffset endDate = DateTimeOffset.UtcNow;
+                    switch (Dimension)
+                    {
+                        case "Минут":
+                            endDate = endDate.AddMinutes(Amount);
+                            break;
+                        case "Часов":
+                            endDate = endDate.AddHours(Amount);
+                            break;
+                        case "Дней":
+                            endDate = endDate.AddDays(Amount);
+                            break;
+                        case "Месяцев":
+                            endDate = endDate.AddMonths(Amount);
+                            break;
+                        default:
+                            f = false;
+                            ModelState.AddModelError("", "Невозможно провести данную операцию, несуществующие еденицы измерения.");
+                            break;
+                    }
+                    if (f)
+                    {
+                        UserManager.SetLockoutEndDate(userId, endDate);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Невозможно провести данную операцию, введенные данные не являются правильными.");
+                }
+            }
+            else
+                ModelState.AddModelError("", "Зачем себя банить?");
+            ViewBag.DangerRoleId = GetDangerRoleId(RoleManager.Roles);
+            return View("Index", UserManager.Users);
         }
 
         private void AddErrorsFromResult(IdentityResult result)

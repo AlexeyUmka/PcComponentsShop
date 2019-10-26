@@ -11,9 +11,11 @@ using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
 using PcComponentsShop.Infrastructure.Data.Units;
 using PcComponentsShop.Infrastructure.Business.ActionValidators;
 using PcComponentsShop.Infrastructure.Business.Basic_Actions;
+using PcComponentsShop.UI.Controllers.Filters;
 
 namespace PcComponentsShop.UI.Controllers
 {
+    [RefuseLockedUsers]
     public class HomeController : Controller
     {
         public PcComponentsUnit pcComponentsUnit;
@@ -35,7 +37,7 @@ namespace PcComponentsShop.UI.Controllers
         }
 
         [Authorize(Roles = "Administrators, Users")]
-        public ActionResult ChangeOrderStatus(int orderId, int goodAmount, bool IsPay = false, bool IsCancel = false)
+        public ActionResult ChangeOrderStatus(int orderId, int goodAmount, bool IsPay = false, bool IsCancel = false, bool IsEnd = false)
         {
             if (goodAmount > 0)
             {
@@ -48,9 +50,9 @@ namespace PcComponentsShop.UI.Controllers
                         o.PaidAt = DateTime.Now;
                     }
                     else if (IsCancel)
-                    {
                         o.OrderStatus = OrderStatus.Canceled.ToString();
-                    }
+                    else if (o.OrderStatus == OrderStatus.Paid.ToString() && IsEnd)
+                        o.OrderStatus = OrderStatus.Finished.ToString();
                     o.GoodAmount = goodAmount;
                     pcComponentsUnit.Orders.Update(o);
                     pcComponentsUnit.Save();

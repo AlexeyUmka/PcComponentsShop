@@ -2,15 +2,16 @@
 @foreach (var o in Model)
 {
     <section class="row">
-        <div class="col-md-4">
+        <div class="col-md-2">
             <img src="@o.GoodImgSrc" alt="Good Image" class="w-100 h-auto"/>
         </div>
-        <div class="col-md-8 bg-light shopBasketButtonGroup">
+        <div class="col-md-10 bg-light shopBasketButtonGroup">
             <input type="hidden" name="id" value="@o.GoodId" />
             <input type="hidden" name="category" value="@o.GoodCategory" />
             <input type="hidden" name="actionName" value="ShopBasket" />
             <input type="hidden" name="controllerName" value="Home" />
             <p>Имя клиента: @o.UserName</p>
+            <p>@o.FullGoodName</p>
             <div class="bg-primary text-white rounded w-25 m-auto text-center">Цена: @o.GoodPrice Грн</div>
             @{
                 string color, word;

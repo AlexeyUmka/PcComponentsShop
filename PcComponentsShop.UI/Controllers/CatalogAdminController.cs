@@ -28,6 +28,51 @@ namespace PcComponentsShop.UI.Controllers
             pcComponentsUnit = new PcComponentsUnit();
         }
 
+        [HttpPost]
+        public ActionResult CreateGood(string category)
+        {
+            int goodId = 0; 
+            switch (category)
+            {
+                case "Процессоры":
+                    pcComponentsUnit.Processors.Create(new Processor() { Category = category});
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.Processors.GetAll().Last().ID;
+                    break;
+                case "Материнские платы":
+                    pcComponentsUnit.Motherboards.Create(new Motherboard() { Category = category });
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.Motherboards.GetAll().Last().ID;
+                    break;
+                case "Видеокарты":
+                    pcComponentsUnit.VideoCards.Create(new VideoCard(){ Category = category});
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.VideoCards.GetAll().Last().ID;
+                    break;
+                case "Корпуса":
+                    pcComponentsUnit.ComputerСases.Create(new ComputerCase(){ Category = category});
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.ComputerСases.GetAll().Last().ID;
+                    break;
+                case "Модули памяти":
+                    pcComponentsUnit.MemoryModules.Create(new MemoryModule(){ Category = category});
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.MemoryModules.GetAll().Last().ID;
+                    break;
+                case "Блоки питания":
+                    pcComponentsUnit.PowerSupplies.Create(new PowerSupply(){ Category = category});
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.PowerSupplies.GetAll().Last().ID;
+                    break;
+                case "SSD диски":
+                    pcComponentsUnit.SSDDrives.Create(new SSDDrive(){ Category = category});
+                    pcComponentsUnit.Save();
+                    goodId = pcComponentsUnit.SSDDrives.GetAll().Last().ID;
+                    break;
+            }
+            return RedirectToActionPermanent("ChangeOrDeleteGood", new { goodId, category, IsChangeGood = true});
+        }
+
         public ActionResult ChangeOrDeleteGood(int goodId, string category, bool IsDeleteGood = false, bool IsChangeGood = false, int page = 1, int pageSize = 20)
         {
             if (IsDeleteGood)
