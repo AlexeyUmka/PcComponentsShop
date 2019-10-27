@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
 namespace PcComponentsShop.Domain.Core.Basic_Models
@@ -14,6 +10,7 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Required]
         public virtual string FullName { get; set; } = "no information";
         [Required]
+        [Range(minimum: 0, maximum: int.MaxValue)]
         public virtual int Price { get; set; } = 0;
         [Required]
         public virtual string Brand { get; set; } = "no information";

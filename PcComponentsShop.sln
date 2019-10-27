@@ -17,8 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcComponentsShop.Domain.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcComponentsShop.Domain.Interfaces", "PcComponentsShop.Domain.Interfaces\PcComponentsShop.Domain.Interfaces.csproj", "{F032C7C2-F8C3-4161-B1CB-91C619433C14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileParserForPcComponentsShop", "FileParserForPcComponentsShop\FileParserForPcComponentsShop.csproj", "{01A75608-70AE-4640-A09A-C1D9CF44A867}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,10 +43,6 @@ Global
 		{F032C7C2-F8C3-4161-B1CB-91C619433C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F032C7C2-F8C3-4161-B1CB-91C619433C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F032C7C2-F8C3-4161-B1CB-91C619433C14}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01A75608-70AE-4640-A09A-C1D9CF44A867}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01A75608-70AE-4640-A09A-C1D9CF44A867}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01A75608-70AE-4640-A09A-C1D9CF44A867}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01A75608-70AE-4640-A09A-C1D9CF44A867}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

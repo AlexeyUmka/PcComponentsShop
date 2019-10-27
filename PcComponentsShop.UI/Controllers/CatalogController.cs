@@ -1,12 +1,10 @@
-﻿using System;
+﻿using PcComponentsShop.Domain.Core.Basic_Models;
+using PcComponentsShop.Infrastructure.Data.Filters;
+using PcComponentsShop.Infrastructure.Data.Units;
+using PcComponentsShop.UI.Models;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using PcComponentsShop.Infrastructure.Data.Units;
-using PcComponentsShop.Domain.Core.Basic_Models;
-using PcComponentsShop.Infrastructure.Data.Filters;
-using PcComponentsShop.UI.Models;
 
 namespace PcComponentsShop.UI.Controllers
 {
@@ -15,11 +13,9 @@ namespace PcComponentsShop.UI.Controllers
         PcComponentsUnit componentsUnit;
         public CatalogController()
         {
-            componentsUnit = new PcComponentsUnit();
+            componentsUnit = MvcApplication.PcComponentsUnit;
         }
 
-        //С помощью компоновки засунуть фильтр по нормальному в layout, а то это какой-то говно-дизайн палучается
-        //А ню дя
         [HttpGet]
         public ActionResult ComponentsCatalog(string[] Brands, string returnUrl, CommonSort SortByIncreaseName = CommonSort.Нет, CommonSort SortByIncreasePrice = CommonSort.Нет, CommonSort SortByIncreaseProducedAt = CommonSort.Нет, string category = "Процессоры", int? minPrice = null, int? maxPrice = null, int page = 1, int pageSize = 20)
         {
@@ -35,9 +31,9 @@ namespace PcComponentsShop.UI.Controllers
             else
                 ModelState.AddModelError("CatalogViewModel", curFilter.ErrorMessage);
 
-            IEnumerable<Good> allGoods = componentsUnit.GetGoodsDependsOnCategory(category) ?? new List<Good>();
+            IEnumerable<Good> allGoods = componentsUnit.GetGoodsDependsOnCategory(category);
 
-            IEnumerable<Good> filteredGoods = componentsUnit.GetGoodsDependsOnFilter(category,(PcComponentsFilter)Session["CurrentFilter"]) ?? new List<Good>();
+            IEnumerable<Good> filteredGoods = componentsUnit.GetGoodsDependsOnFilter(category,(PcComponentsFilter)Session["CurrentFilter"]);
 
             if(allGoods != null && filteredGoods != null)
                 return View(CatalogViewModel<Good>.GetCatalogViewModel(page, pageSize, filteredGoods, allGoods, category));

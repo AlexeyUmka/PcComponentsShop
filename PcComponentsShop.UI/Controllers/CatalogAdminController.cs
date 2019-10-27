@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PcComponentsShop.Domain.Core.Basic_Models;
+using PcComponentsShop.Infrastructure.Data.Units;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
-using Microsoft.AspNet.Identity.Owin;
-using PcComponentsShop.Domain.Core.Basic_Models;
-using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
-using PcComponentsShop.Infrastructure.Business.Basic_Models;
-using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
-using PcComponentsShop.Infrastructure.Data.Units;
-using PcComponentsShop.Infrastructure.Business.ActionValidators;
-using PcComponentsShop.Infrastructure.Business.Basic_Actions;
-using PcComponentsShop.Infrastructure.Data.Filters;
-using PcComponentsShop.UI.Models;
-using System.Data.Entity;
 
 namespace PcComponentsShop.UI.Controllers
 {
@@ -25,7 +14,7 @@ namespace PcComponentsShop.UI.Controllers
 
         public CatalogAdminController()
         {
-            pcComponentsUnit = new PcComponentsUnit();
+            pcComponentsUnit = MvcApplication.PcComponentsUnit;
         }
 
         [HttpPost]
@@ -133,6 +122,7 @@ namespace PcComponentsShop.UI.Controllers
             return View(pcComponentsUnit.Processors.GetElement(p.ID));
         }
         //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        //Хз как обработать, просто увеличил размер запроса(
         [HttpPost]
         public ActionResult ChangeProcessor(Processor p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
@@ -162,7 +152,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.ComputerСases.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        
         [HttpPost]
         public ActionResult ChangeComputerCase(ComputerCase p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
@@ -192,7 +182,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.MemoryModules.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        
         [HttpPost]
         public ActionResult ChangeMemoryModule(MemoryModule p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
@@ -222,7 +212,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.Motherboards.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        
         [HttpPost]
         public ActionResult ChangeMotherboard(Motherboard p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
@@ -252,7 +242,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.PowerSupplies.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        
         [HttpPost]
         public ActionResult ChangePowerSupply(PowerSupply p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
@@ -282,7 +272,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.SSDDrives.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        
         [HttpPost]
         public ActionResult ChangeSSDDrive(SSDDrive p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
@@ -300,7 +290,7 @@ namespace PcComponentsShop.UI.Controllers
                         return View(pcComponentsUnit.SSDDrives.GetElement(p.ID));
                     }
                 }
-                p.FullName = string.Format($"{p.Category} {p.Model} {p.Brand} {p.Capacity}GB {p.FormFactor} {p.ConnectionInterface} ({p.ID})");
+                p.FullName = string.Format($"{p.Category} {p.Model} {p.Brand} {p.Capacity} {p.FormFactor} {p.ConnectionInterface} ({p.ID})");
                 pcComponentsUnit.SSDDrives.Update(p);
                 pcComponentsUnit.Save();
                 return RedirectToActionPermanent("ComponentsCatalog", "Catalog", new { category = p.Category, page, pageSize });
@@ -312,7 +302,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.VideoCards.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
+        
         [HttpPost]
         public ActionResult ChangeVideoCard(VideoCard p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {

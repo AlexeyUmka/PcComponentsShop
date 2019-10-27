@@ -1,17 +1,14 @@
-﻿using System;
+﻿using PcComponentsShop.Domain.Core.Basic_Models;
+using PcComponentsShop.Infrastructure.Business.ActionValidators;
+using PcComponentsShop.Infrastructure.Business.Basic_Actions;
+using PcComponentsShop.Infrastructure.Business.Basic_Models;
+using PcComponentsShop.Infrastructure.Data.Units;
+using PcComponentsShop.UI.Controllers.Filters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using PcComponentsShop.Domain.Core.Basic_Models;
-using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
-using PcComponentsShop.Infrastructure.Business.Basic_Models;
-using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
-using PcComponentsShop.Infrastructure.Data.Units;
-using PcComponentsShop.Infrastructure.Business.ActionValidators;
-using PcComponentsShop.Infrastructure.Business.Basic_Actions;
-using PcComponentsShop.UI.Controllers.Filters;
 
 namespace PcComponentsShop.UI.Controllers
 {
@@ -20,9 +17,13 @@ namespace PcComponentsShop.UI.Controllers
     {
         public PcComponentsUnit pcComponentsUnit;
 
+        delegate void HomeInfoEvents (string message);
+
+        event HomeInfoEvents OrderInfoEvent = MvcApplication.AppInfoLogger.Info;
+
         public HomeController()
         {
-            pcComponentsUnit = new PcComponentsUnit();
+            pcComponentsUnit = MvcApplication.PcComponentsUnit;
         }
 
         public ActionResult Index()
@@ -53,6 +54,7 @@ namespace PcComponentsShop.UI.Controllers
                         o.OrderStatus = OrderStatus.Canceled.ToString();
                     else if (o.OrderStatus == OrderStatus.Paid.ToString() && IsEnd)
                         o.OrderStatus = OrderStatus.Finished.ToString();
+                    OrderInfoEvent($"Order({o.OrderId}) status has been changed to {o.OrderStatus}\nOwner name:{o.UserName}");
                     o.GoodAmount = goodAmount;
                     pcComponentsUnit.Orders.Update(o);
                     pcComponentsUnit.Save();
@@ -91,6 +93,8 @@ namespace PcComponentsShop.UI.Controllers
                         pcComponentsUnit.Save();
                         cookieReq["ShoppingBasket"] = cookieReq["ShoppingBasket"].Replace(findItem, "");
                         Response.Cookies.Add(cookieReq);
+                        OrderInfoEvent($"Order({order.OrderId}) has been created and registered\nOwner name:{order.UserName}\n" +
+                            $"GoodId: {order.GoodId} Price: {order.GoodPrice}");
                     }
                 }
                 i++;

@@ -10,14 +10,14 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-expand-xl bg-dark navbar-dark header" style="z-index: 2;">
+    <nav class="navbar navbar-expand-xl bg-dark navbar-dark header" style="z-index: 4;">
         <a class="navbar-brand facinateFont" href="/Home/Index" id="Brand">PcShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <form class="form-inline searchForm" action="#">
-                <input class="form-control" type="text" placeholder="Search">
+            <form class="form-inline searchForm" action="#" style="visibility: hidden;">
+                <input class="form-control" type="text" placeholder="Поиск товаров">
                 <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
             </form>
             <ul class="navbar-nav">
@@ -57,8 +57,8 @@
                         <i class="fa fa-user-circle"></i>Личный кабинет
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
-                        <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>
+                        @*<a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
+                        <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>*@
                         <a class="dropdown-item" href="/Home/Orders"><i class="fa fa-first-order"></i>Ваши Заказы</a>
                     </div>
                 </li>

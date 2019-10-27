@@ -6,7 +6,6 @@ using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
 using PcComponentsShop.UI.Controllers.Filters;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -19,6 +18,10 @@ namespace PcComponentsShop.UI.Controllers
     [RefuseLockedUsers]
     public class AccountController : Controller
     {
+        delegate void AccountInfoEvents(string message);
+
+        event AccountInfoEvents AccountInfoEvent = MvcApplication.AppInfoLogger.Info;
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -72,6 +75,7 @@ namespace PcComponentsShop.UI.Controllers
                 {
                     IsPersistent = true
                 }, ident);
+                AccountInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly logged in");
                 if (!string.IsNullOrEmpty(returnUrl))
                     return Redirect(returnUrl);
                 else
@@ -84,6 +88,7 @@ namespace PcComponentsShop.UI.Controllers
         public ActionResult LogOff()
         {
             AuthManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            AccountInfoEvent($"Account wiht name:{User.Identity.Name}; and id:{User.Identity.GetUserId()} has been successfuly logged off");
             return RedirectToAction("Index", "Home");
         }
         [AllowAnonymous]
@@ -105,6 +110,7 @@ namespace PcComponentsShop.UI.Controllers
                 if (result.Succeeded)
                 {
                     UserManager.AddToRole(user.Id, "Users");
+                    AccountInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly registered");
                     return View("SuccessfulRegistration", model);
                 }
                 else

@@ -9,7 +9,7 @@
         , спасибо за понимание)
     </h4>
 </div>
-@if (User.IsInRole("Administrators"))
+@if (User.IsInRole("Administrators") && Model != null)
 {
     <div class="alert-warning">
         <p>Тип исключения: @Model.Exception.GetType().ToString()</p>

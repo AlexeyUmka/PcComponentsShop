@@ -1,9 +1,7 @@
-﻿using PcComponentsShop.UI.Models.Pagination;
-using System;
+﻿using PcComponentsShop.Domain.Core.Basic_Models;
+using PcComponentsShop.UI.Models.Pagination;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using PcComponentsShop.Domain.Core.Basic_Models;
 
 namespace PcComponentsShop.UI.Models
 {

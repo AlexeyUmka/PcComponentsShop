@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity.Owin;
-using PcComponentsShop.Domain.Core.Basic_Models;
-using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
-using PcComponentsShop.Infrastructure.Business.Basic_Models;
-using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
+﻿using PcComponentsShop.Infrastructure.Business.Basic_Models;
 using PcComponentsShop.Infrastructure.Data.Units;
-using PcComponentsShop.Infrastructure.Business.ActionValidators;
-using PcComponentsShop.Infrastructure.Business.Basic_Actions;
+using System;
+using System.Linq;
+using System.Web.Mvc;
 namespace PcComponentsShop.UI.Controllers
 {
     [Authorize(Roles = "Administrators")]
@@ -18,9 +10,13 @@ namespace PcComponentsShop.UI.Controllers
     {
         PcComponentsUnit pcComponentsUnit;
 
+        delegate void OrderAdminEvents(string message);
+
+        event OrderAdminEvents OrderInfoEvent = MvcApplication.AppInfoLogger.Info;
+
         public OrderAdminController()
         {
-            pcComponentsUnit = new PcComponentsUnit();
+            pcComponentsUnit = MvcApplication.PcComponentsUnit;
         }
         public ActionResult Orders()
         {
@@ -38,6 +34,7 @@ namespace PcComponentsShop.UI.Controllers
                     order.OrderStatus = newStatus;
                     pcComponentsUnit.Orders.Update(order);
                     pcComponentsUnit.Save();
+                    OrderInfoEvent($"Order({order.OrderId}) status has been changed to {order.OrderStatus}\nOwner name:{order.UserName}");
                 }
             }
             return View("Orders", pcComponentsUnit.Orders.GetAll());

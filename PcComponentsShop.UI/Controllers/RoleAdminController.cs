@@ -1,15 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using PcComponentsShop.Domain.Core.Basic_Models;
+using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
+using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using System.ComponentModel.DataAnnotations;
-using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
-using System.Threading.Tasks;
-using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
-using PcComponentsShop.Domain.Core.Basic_Models;
 
 namespace PcComponentsShop.UI.Controllers
 {

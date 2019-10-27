@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
-using System.Data.Entity;
 using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
-using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 
 namespace PcComponentsShop.Infrastructure.Data.Contexts
 {

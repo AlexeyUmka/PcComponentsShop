@@ -1,10 +1,6 @@
-﻿using System;
+﻿using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 
 namespace PcComponentsShop.Domain.Core.Basic_Models
 {

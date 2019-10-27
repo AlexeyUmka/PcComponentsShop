@@ -1,11 +1,7 @@
 ﻿using PcComponentsShop.Domain.Interfaces.Basic_Interfaces;
 using PcComponentsShop.Infrastructure.Business.Basic_Models;
 using PcComponentsShop.Infrastructure.Data.Contexts;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.Entity;
 
 namespace PcComponentsShop.Infrastructure.Data.Repositories.Business

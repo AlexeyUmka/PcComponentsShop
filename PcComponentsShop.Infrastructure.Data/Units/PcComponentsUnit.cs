@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PcComponentsShop.Domain.Core.Basic_Models;
+﻿using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Infrastructure.Data.Contexts;
 using PcComponentsShop.Infrastructure.Data.Filters;
 using PcComponentsShop.Infrastructure.Data.Repositories;
 using PcComponentsShop.Infrastructure.Data.Repositories.Business;
+using System;
+using System.Collections.Generic;
 
 namespace PcComponentsShop.Infrastructure.Data.Units
 {

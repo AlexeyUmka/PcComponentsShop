@@ -54,7 +54,7 @@
                         }
                         <form method="post" action="/Admin/Ban" class="form-inline">
                             <input type="hidden" name="userId" value="@user.Id" />
-                            @if (user.LockoutEndDateUtc < DateTime.UtcNow)
+                            @if (user.LockoutEndDateUtc < DateTime.UtcNow || user.LockoutEndDateUtc == null)
                             {
                                 if (f)
                                 {

@@ -11,8 +11,8 @@
         <small>Предидущее значение: @Model.CellMemoryType </small>
     </div>
     <div class="form-group">
-        <label for="Capacity">Ёмкость(Гб):</label>
-        @Html.EditorFor(p => p.Capacity, new { htmlAttributes = new {id= "Capacity", @class = "form-control", placeholder = "Ёмкость" } })
+        <label for="Capacity">Ёмкость(число ед.измерения(Гб, Мб и тд)):</label>
+        @Html.EditorFor(p => p.Capacity, new { htmlAttributes = new {id= "Capacity", min="1", @class = "form-control", placeholder = "Ёмкость" } })
         <small>Предидущее значение: @Model.Capacity </small>
     </div>
     <div class="form-group">
