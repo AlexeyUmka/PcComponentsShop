@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PcComponentsShop.Domain.Core.Basic_Models;
-using PcComponentsShop.Domain.Interfaces.Basic_Interfaces;
+﻿using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Domain.Interfaces.Extended_Interfaces;
 using PcComponentsShop.Infrastructure.Data.Contexts;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 
 namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
-    public  class PcComponentsRepository<T> : IFilteredPcComponentsRepository<T> where T:Good
+    public abstract class PcComponentsRepository<T> : IFilteredPcComponentsRepository<T> where T:Good
     {
         protected PcComponentsShopContext db;
         protected DbSet<T> table;
@@ -46,9 +42,16 @@ namespace PcComponentsShop.Infrastructure.Data.Repositories
         {
             return repositoryFIlter.ExecuteAndReturn(table);
         }
-
+        //https://patrickdesjardins.com/blog/entity-framework-ef-modifying-an-instance-that-is-already-in-the-context
         public virtual void Update(T item)
         {
+            var local = db.Set<T>()
+                         .Local
+                         .FirstOrDefault(f => f.ID == item.ID);
+            if (local != null)
+            {
+                db.Entry(local).State = EntityState.Detached;
+            }
             db.Entry(item).State = EntityState.Modified;
         }
     }

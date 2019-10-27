@@ -4,10 +4,6 @@ using Microsoft.Owin.Security.Cookies;
 using Owin;
 using PcComponentsShop.Infrastructure.Data.Contexts;
 using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace PcComponentsShop.UI.App_Start
 {

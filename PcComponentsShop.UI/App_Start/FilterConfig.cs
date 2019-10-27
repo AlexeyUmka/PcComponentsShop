@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using PcComponentsShop.UI.Controllers.Filters;
 using System.Web.Mvc;
 
 namespace PcComponentsShop.UI
@@ -8,6 +8,7 @@ namespace PcComponentsShop.UI
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute() { View="_Exception"});
+            filters.Add(new ExceptionLogger(MvcApplication.AppErrorLogger));
         }
     }
 }

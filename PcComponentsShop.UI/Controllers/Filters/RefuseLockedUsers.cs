@@ -1,20 +1,11 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using PcComponentsShop.Domain.Core.Basic_Models;
-using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Mvc.Filters;
 using System.Web.Routing;
 using System.Web.Security;
-using PcComponentsShop.UI.Controllers;
-using System.Web.Mvc.Filters;
 
 namespace PcComponentsShop.UI.Controllers.Filters
 {

@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
-using PcComponentsShop.Infrastructure.Data.Contexts;
 using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace PcComponentsShop.UI.Controllers
 {
     [Authorize(Roles = "Administrators")]
     public class AdminController : Controller
     {
+        delegate void AdminInfoEvents(string message);
+
+        event AdminInfoEvents AdminInfoEvent = MvcApplication.AppInfoLogger.Info;
+
         public string DangerRoleName { get; } = "Administrators";
 
         public ActionResult Index()
@@ -40,10 +41,12 @@ namespace PcComponentsShop.UI.Controllers
 
                 if (result.Succeeded)
                 {
+                    AdminInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly created");
                     return RedirectToAction("Index");
                 }
                 else
                 {
+                    AdminInfoEvent($"Account wiht name:{user?.UserName}; and id:{user?.Id} hasn't been successfuly created");
                     AddErrorsFromResult(result);
                 }
             }
@@ -59,10 +62,12 @@ namespace PcComponentsShop.UI.Controllers
                 IdentityResult result = await UserManager.DeleteAsync(user);
                 if (result.Succeeded)
                 {
+                    AdminInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly deleted");
                     return RedirectToAction("Index");
                 }
                 else
                 {
+                    AdminInfoEvent($"Account wiht name:{user?.UserName}; and id:{user?.Id} hasn't been successfuly deleted");
                     return View("Error", result.Errors);
                 }
             }
@@ -132,10 +137,12 @@ namespace PcComponentsShop.UI.Controllers
                     IdentityResult result = await UserManager.UpdateAsync(user);
                     if (result.Succeeded)
                     {
+                        AdminInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly changed");
                         return RedirectToAction("Index");
                     }
                     else
                     {
+                        AdminInfoEvent($"Account wiht name:{user?.UserName}; and id:{user?.Id} hasn't been successfuly changed");
                         AddErrorsFromResult(result);
                     }
                 }
@@ -181,6 +188,7 @@ namespace PcComponentsShop.UI.Controllers
                     }
                     if (f)
                     {
+                        AdminInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly banned till {endDate}");
                         UserManager.SetLockoutEndDate(userId, endDate);
                     }
                 }
