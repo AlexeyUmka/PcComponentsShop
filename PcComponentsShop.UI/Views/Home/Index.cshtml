@@ -10,7 +10,7 @@
         {
             @CatalogAdminHelper.ShowCreateGoodButton("Процессоры")
         }
-        <img class="card-img-top" src="https://pngicon.ru/file/uploads/processor.png" alt="Card image">
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImageProcessor.jpg" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Процессоры" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
                 <span class="align-self-center">Процессоры</span>
@@ -20,9 +20,21 @@
     <div class="card">
         @if (User.IsInRole("Administrators"))
         {
+            @CatalogAdminHelper.ShowCreateGoodButton("Модули памяти")
+        }
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImageMemoryModule.png" alt="Card image">
+        <a href="/Catalog/ComponentsCatalog/?category=Модули памяти" class="categoryButton">
+            <div class="card-img-overlay row justify-content-center">
+                <span class="align-self-center">Модули памяти</span>
+            </div>
+        </a>
+    </div>
+    <div class="card">
+        @if (User.IsInRole("Administrators"))
+        {
             @CatalogAdminHelper.ShowCreateGoodButton("Материнские платы")
         }
-        <img class="card-img-top" src="https://pngicon.ru/file/uploads/materinskaja-plata.png" alt="Card image">
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImageMotherboard.jpg" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Материнские платы" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
                 <span class="align-self-center">Материнские платы</span>
@@ -34,7 +46,7 @@
         {
             @CatalogAdminHelper.ShowCreateGoodButton("Видеокарты")
         }
-        <img class="card-img-top" src="https://hyperpc.ru/images/company/news/nvidia-titan-v/content/nvidia-titan-v-shroud-td.png" alt="Card image">
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImageVideoCard.jpg" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Видеокарты" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
                 <span class="align-self-center">Видеокарты</span>
@@ -44,21 +56,9 @@
     <div class="card">
         @if (User.IsInRole("Administrators"))
         {
-            @CatalogAdminHelper.ShowCreateGoodButton("Модули памяти")
-        }
-        <img class="card-img-top" src="https://pcshop.ua/image/cache/catalog/tovar/1153782-1024x768.jpg" alt="Card image">
-        <a href="/Catalog/ComponentsCatalog/?category=Модули памяти" class="categoryButton">
-            <div class="card-img-overlay row justify-content-center">
-                <span class="align-self-center">Модули памяти</span>
-            </div>
-        </a>
-    </div>
-    <div class="card">
-        @if (User.IsInRole("Administrators"))
-        {
             @CatalogAdminHelper.ShowCreateGoodButton("Корпуса")
         }
-        <img class="card-img-top" src="https://cdn1.technopark.ru/technopark/photos_resized/product/600_600/115879/1_115879.jpg" alt="Card image">
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImageComputerCase.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Корпуса" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
                 <span class="align-self-center">Корпуса</span>
@@ -70,7 +70,7 @@
         {
             @CatalogAdminHelper.ShowCreateGoodButton("Блоки питания")
         }
-        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/05/20/11/01/computer-3415505_960_720.jpg" alt="Card image">
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImagePowerSupply.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=Блоки питания" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
                 <span class="align-self-center">Блоки питания</span>
@@ -82,7 +82,7 @@
         {
             @CatalogAdminHelper.ShowCreateGoodButton("SSD диски")
         }
-        <img class="card-img-top" src="http://icons.iconarchive.com/icons/thvg/slick-drives/512/SSD-Drive-icon.png" alt="Card image">
+        <img class="card-img-top" src="~/Files/CatalogImages/CatalogImageSSDDrive.png" alt="Card image">
         <a href="/Catalog/ComponentsCatalog/?category=SSD диски" class="categoryButton">
             <div class="card-img-overlay row justify-content-center">
                 <span class="align-self-center">SSD диски</span>

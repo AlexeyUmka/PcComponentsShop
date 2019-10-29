@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcComponentsShop.Domain.Cor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcComponentsShop.Domain.Interfaces", "PcComponentsShop.Domain.Interfaces\PcComponentsShop.Domain.Interfaces.csproj", "{F032C7C2-F8C3-4161-B1CB-91C619433C14}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PcComponentsShop.Tests", "PcComponentsShop.Tests\PcComponentsShop.Tests.csproj", "{14FD7F2F-E39B-474A-BF24-68527AD8CD5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{F032C7C2-F8C3-4161-B1CB-91C619433C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F032C7C2-F8C3-4161-B1CB-91C619433C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F032C7C2-F8C3-4161-B1CB-91C619433C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FD7F2F-E39B-474A-BF24-68527AD8CD5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FD7F2F-E39B-474A-BF24-68527AD8CD5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FD7F2F-E39B-474A-BF24-68527AD8CD5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FD7F2F-E39B-474A-BF24-68527AD8CD5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
