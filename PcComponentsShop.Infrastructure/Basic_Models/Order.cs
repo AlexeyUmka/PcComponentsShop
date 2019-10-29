@@ -34,5 +34,10 @@ namespace PcComponentsShop.Infrastructure.Business.Basic_Models
         public string GoodImgSrc { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime? PaidAt { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format($"{OrderId},{OrderStatus},{FullGoodName},{GoodId},{UserName},{GoodAmount},{GoodCategory},{GoodPrice},{GoodImgSrc},{PaidAt};");
+        }
     }
 }

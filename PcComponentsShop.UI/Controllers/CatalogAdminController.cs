@@ -121,8 +121,6 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View(pcComponentsUnit.Processors.GetElement(p.ID));
         }
-        //Обработать исключение длины запроса(по дефолту максимум 4мб)
-        //Хз как обработать, просто увеличил размер запроса(
         [HttpPost]
         public ActionResult ChangeProcessor(Processor p, HttpPostedFileBase NewImage, bool IsDeletePreviousImageFromServer = false, int page = 1, int pageSize = 20)
         {
