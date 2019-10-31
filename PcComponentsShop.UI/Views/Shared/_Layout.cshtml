@@ -8,6 +8,10 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/font-awesome.min.css")
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/SmoothScroll.js")
 </head>
 <body>
     <nav class="navbar navbar-expand-xl bg-dark navbar-dark header" style="z-index: 4;">
@@ -60,6 +64,7 @@
                         @*<a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
                         <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>*@
                         <a class="dropdown-item" href="/Home/Orders"><i class="fa fa-first-order"></i>Ваши Заказы</a>
+                        <a class="dropdown-item" href="/Home/TechnicalSupport"><i class="fa fa-question-circle">Тех-поддержка</i></a>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -89,9 +94,6 @@
     <footer id="footer" class="bg-dark">
         <p>&copy; @DateTime.Now.Year - My PcShop All rights are not reserved XD</p>
     </footer>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/SmoothScroll.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

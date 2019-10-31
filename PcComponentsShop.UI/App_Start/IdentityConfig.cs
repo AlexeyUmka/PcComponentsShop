@@ -14,6 +14,8 @@ namespace PcComponentsShop.UI.App_Start
             app.CreatePerOwinContext<AppIdentityDbContext>(AppIdentityDbContext.Create);
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
             app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
+            //SignalR
+            app.MapSignalR();
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

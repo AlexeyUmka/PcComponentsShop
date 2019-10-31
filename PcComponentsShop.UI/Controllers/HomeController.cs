@@ -30,6 +30,11 @@ namespace PcComponentsShop.UI.Controllers
         {
             return View();
         }
+        [Authorize]
+        public ActionResult TechnicalSupport()
+        {
+            return View();
+        }
         [Authorize(Roles = "Administrators, Users")]
         public ActionResult Orders()
         {

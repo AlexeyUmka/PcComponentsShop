@@ -64,6 +64,7 @@
     <Compile Include="Basic_Models\ComponentsModels\VideoCard.cs" />
     <Compile Include="Basic_Models\RegistrationSystemModels\AppRole.cs" />
     <Compile Include="Basic_Models\RegistrationSystemModels\AppUser.cs" />
+    <Compile Include="Basic_Models\TechnicalSupportModels\ChatParticipant.cs" />
     <Compile Include="Basic_Models\UserViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
