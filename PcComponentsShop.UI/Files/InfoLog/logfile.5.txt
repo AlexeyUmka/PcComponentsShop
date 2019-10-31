@@ -1,0 +1,22 @@
+------Info(2019-10-31 20:07:45.6149)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.HomeController.ChangeOrderStatus
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Order(55) status has been changed to Canceled
+Owner name:Alexey
+
+------Info(2019-10-31 20:30:36.6786)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.HomeController+<CreateRegisteredOrder>d__9.MoveNext
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Order(56) has been created and registered
+Owner name:Alexey
+GoodId: 6 Price: 5749
+
+------Info(2019-10-31 20:30:48.1617)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.HomeController.ChangeOrderStatus
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Order(56) status has been changed to Canceled
+Owner name:Alexey
+

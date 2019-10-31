@@ -1,12 +1,16 @@
-﻿using PcComponentsShop.Domain.Core.Basic_Models;
+﻿using Microsoft.AspNet.Identity.Owin;
+using PcComponentsShop.Domain.Core.Basic_Models;
+using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 using PcComponentsShop.Infrastructure.Business.ActionValidators;
 using PcComponentsShop.Infrastructure.Business.Basic_Actions;
 using PcComponentsShop.Infrastructure.Business.Basic_Models;
+using PcComponentsShop.Infrastructure.Data.RegistrationSystemManagment;
 using PcComponentsShop.Infrastructure.Data.Units;
 using PcComponentsShop.UI.Controllers.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -64,8 +68,9 @@ namespace PcComponentsShop.UI.Controllers
         }
         
         [Authorize(Roles = "Administrators, Users")]
-        public ActionResult CreateRegisteredOrder(int[] goodId, string[] category, string ids = null, string ctgrs = null)
+        public async Task<ActionResult> CreateRegisteredOrder(int[] goodId, string[] category, string ids = null, string ctgrs = null)
         {
+            AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
             if (!string.IsNullOrEmpty(ids) && !string.IsNullOrEmpty(ctgrs))
             {
                 goodId = Array.ConvertAll(ids.Split(','), int.Parse);
@@ -95,6 +100,11 @@ namespace PcComponentsShop.UI.Controllers
                         Response.Cookies.Add(cookieReq);
                         OrderInfoEvent($"Order({order.OrderId}) has been created and registered\nOwner name:{order.UserName}\n" +
                             $"GoodId: {order.GoodId} Price: {order.GoodPrice}");
+                        if (currUser != null)
+                        {
+                            currUser.GoodsInBasket = cookieReq["ShoppingBasket"];
+                            await UserManager.UpdateAsync(currUser);
+                        }
                     }
                 }
                 i++;
@@ -102,17 +112,46 @@ namespace PcComponentsShop.UI.Controllers
             return RedirectToActionPermanent("Orders");
         }
 
-        public ActionResult ShopBasket()
+        public async Task<ActionResult> ShopBasket()
         {
+            AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            bool f = currUser != null ? true : false;
+
             HttpCookie cookieReq = Request.Cookies["ShoppingBasket"];
             ShoppingBasket shoppingBasket = new ShoppingBasket();
 
             List<Good> goods = new List<Good>();
             if (cookieReq == null)
             {
-                HttpCookie cookie = new HttpCookie("ShoppingBasket");
-                cookie.Expires = DateTime.Now.AddMonths(6);
+                HttpCookie cookie = new HttpCookie("ShoppingBasket")
+                {
+                    Expires = DateTime.Now.AddMonths(6)
+                };
                 Response.Cookies.Add(cookie);
+            }
+            else if(cookieReq != null && f && string.IsNullOrEmpty(currUser.GoodsInBasket))
+            {
+                currUser.GoodsInBasket = cookieReq["ShoppingBasket"];
+                shoppingBasket = ShoppingBasket.ReadFromCookie(cookieReq["ShoppingBasket"]);
+                foreach (Good g in shoppingBasket.Goods)
+                {
+                    Good el = pcComponentsUnit.GetGoodsDependsOnCategory(g.Category).FirstOrDefault(e => e.ID == g.ID);
+                    if (el != null)
+                        goods.Add(el);
+                }
+                await UserManager.UpdateAsync(currUser);
+            }
+            else if(cookieReq != null && f && !string.IsNullOrEmpty(currUser.GoodsInBasket))
+            {
+                shoppingBasket = ShoppingBasket.ReadFromCookie(currUser.GoodsInBasket);
+                cookieReq["ShoppingBasket"] = currUser.GoodsInBasket;
+                Response.Cookies.Add(cookieReq);
+                foreach (Good g in shoppingBasket.Goods)
+                {
+                    Good el = pcComponentsUnit.GetGoodsDependsOnCategory(g.Category).FirstOrDefault(e => e.ID == g.ID);
+                    if (el != null)
+                        goods.Add(el);
+                }
             }
             else
             {
@@ -127,19 +166,25 @@ namespace PcComponentsShop.UI.Controllers
             return View(goods);
         }
         [HttpPost]
-        public ActionResult ShopBasket(int id, string category, string actionName, string controllerName, bool removeSelected = false, bool buySelected = false, string[] selectedGoods = null, int page = 1, bool isRemoveFromBasket = false)
+        public async Task<ActionResult> ShopBasket(int id, string category, string actionName, string controllerName, bool removeSelected = false, bool buySelected = false, string[] selectedGoods = null, int page = 1, bool isRemoveFromBasket = false)
         {
+            AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            bool f = currUser != null ? true : false;
             if (!isRemoveFromBasket && !removeSelected && !buySelected)
             {
                 HttpCookie cookieReq = Request.Cookies["ShoppingBasket"];
                 if (cookieReq == null)
                 {
-                    cookieReq = new HttpCookie("ShoppingBasket");
-                    cookieReq.Expires = DateTime.Now.AddMonths(6);
+                    cookieReq = new HttpCookie("ShoppingBasket")
+                    {
+                        Expires = DateTime.Now.AddMonths(6)
+                    };
                 }
                 ShoppingBasket shoppingBasket = new ShoppingBasket() { Goods = { new Good() { ID = id, Category = category } } };
                 cookieReq["ShoppingBasket"] += shoppingBasket.ToString();
                 Response.Cookies.Add(cookieReq);
+                if (f)
+                    currUser.GoodsInBasket = cookieReq["ShoppingBasket"];
             }
             else if (removeSelected && selectedGoods != null)
             {
@@ -153,6 +198,8 @@ namespace PcComponentsShop.UI.Controllers
                             newCookie = newCookie.Replace(s, "");
                         cookieReq["ShoppingBasket"] = newCookie;
                         Response.Cookies.Add(cookieReq);
+                        if (f)
+                            currUser.GoodsInBasket = cookieReq["ShoppingBasket"];
                     }
                 }
             }
@@ -164,6 +211,8 @@ namespace PcComponentsShop.UI.Controllers
                     string newCookie = cookieReq["ShoppingBasket"].Replace(string.Format($"{id},{category}+"), "");
                     cookieReq["ShoppingBasket"] = newCookie;
                     Response.Cookies.Add(cookieReq);
+                    if (f)
+                        currUser.GoodsInBasket = cookieReq["ShoppingBasket"];
                 }
             }
             else if (buySelected && selectedGoods != null)
@@ -173,11 +222,19 @@ namespace PcComponentsShop.UI.Controllers
                 string ctgrs = string.Join(",", sb.Goods.Select(g => g.Category));
                 return RedirectToActionPermanent("CreateRegisteredOrder", new { ids, ctgrs });
             }
+            if (f)
+                await UserManager.UpdateAsync(currUser);
             if (string.IsNullOrEmpty(actionName) || string.IsNullOrEmpty(controllerName))
                 return RedirectToActionPermanent("ComponentsCatalog", "Catalog", new { category, page });
             else
                 return RedirectToActionPermanent(actionName, controllerName);
         }
-
+        private AppUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+            }
+        }
     }
 }

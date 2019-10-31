@@ -7,13 +7,13 @@ namespace PcComponentsShop.Infrastructure.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ModelFieldForGood : IMigrationMetadata
+    public sealed partial class WishesShopBasketFields : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ModelFieldForGood));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(WishesShopBasketFields));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910211146052_ModelFieldForGood"; }
+            get { return "201910311653115_WishesShopBasketFields"; }
         }
         
         string IMigrationMetadata.Source
