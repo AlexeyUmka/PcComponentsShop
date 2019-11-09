@@ -8,9 +8,10 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/font-awesome.min.css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
-    <nav class="navbar navbar-expand-xl bg-dark navbar-dark header" style="z-index: 4;">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark header" style="z-index: 4;">
         <a class="navbar-brand facinateFont" href="/Home/Index" id="Brand">PcShop</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -58,28 +59,40 @@
                     </a>
                     <div class="dropdown-menu">
                         @*<a class="dropdown-item" href="#"><i class="fa fa-id-card"></i>Профиль</a>
-                        <a class="dropdown-item" href="#"><i class="fa fa-heart"></i>Желания</a>*@
+                            *@
                         <a class="dropdown-item" href="/Home/Orders"><i class="fa fa-first-order"></i>Ваши Заказы</a>
                     </div>
                 </li>
                 <li class="nav-item">
                     @{ HttpCookie cookie = Request.Cookies["ShoppingBasket"];
-                        int? goodsInBasket = 0;
+                        int goodsInBasket = 0;
                         if (cookie != null)
                         {
-                            goodsInBasket = cookie["ShoppingBasket"]?.ToCharArray().Where(c => c == '+').Count();
+                            if (!string.IsNullOrEmpty(cookie["ShoppingBasket"]))
+                            {
+                                goodsInBasket = cookie["ShoppingBasket"].ToCharArray().Where(c => c == '+').Count()/2;
+                            }
+                        }
+                        int wishesAmount = 0;
+                        cookie = Request.Cookies["WishesAmount"];
+                        if(cookie != null && int.TryParse(cookie["WishesAmount"], out int wA))
+                        {
+                            wishesAmount = wA;
                         }
                     }
-                    <a class="nav-link" href="/Home/ShopBasket"><i class="fa fa-shopping-basket fa-2x"></i><span id="shopBasketGoodsAmount" class="text-success">@goodsInBasket</span></a>
+                    <a class="nav-link" href="/Home/ShopBasket"><i class="fa fa-shopping-basket fa-2x"></i><span id="shopBasketGoodsAmount" class="text-success"><sub>@goodsInBasket</sub></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Wishes"><i class="fa fa-heart fa-2x"></i><span id="wishesAmount" class="text-success"><sub>@wishesAmount</sub></span></a>
                 </li>
             </ul>
         </div>
     </nav>
     @Html.Partial("_LoginPartial")
     <div class="container body-content">
-        <div class="float-right sticky-top mr-5" style="opacity: 0.5;z-index: 1;">
-            <a href="#Brand" class="smooth btn btn-outline-dark position-absolute"><i class="fa fa-arrow-up fa-2x"></i></a>
-            <a href="#footer" class="smooth btn btn-outline-dark position-absolute mt-5"><i class="fa fa-arrow-down fa-2x"></i></a>
+        <div class="sticky-top" style="opacity: 0.5;z-index: 1;">
+            <a href="#Brand" class="smooth btn btn-outline-dark position-absolute" style="margin-top:50px; right:0;"><i class="fa fa-arrow-up fa-2x"></i></a>
+            <a href="#footer" class="smooth btn btn-outline-dark position-absolute" style="margin-top:100px; right:0;"><i class="fa fa-arrow-down fa-2x"></i></a>
         </div>
         <div style="min-height: 937px;">
             @RenderBody()
@@ -87,9 +100,8 @@
         <hr />
     </div>
     <footer id="footer" class="bg-dark">
-        <p>&copy; @DateTime.Now.Year - My PcShop All rights are not reserved XD</p>
+        <p>&copy; @DateTime.Now.Year - My PcShop All rights reserved </p>
     </footer>
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/SmoothScroll.js")
     @RenderSection("scripts", required: false)

@@ -6,6 +6,8 @@
 <section class="filters collapse bg-light p-2" id="Filters">
     <form class="form-group mt-5" action="ComponentsCatalog" method="get">
         <input type="hidden" name="category" value="@Model.Category" />
+        <label for="GoodsPerPage">Колв-во товаров на странице:</label>
+        @Html.DropDownList("pageSize", new SelectList(new int[] { 20, 40, 60}), new {id="GoodsPerPage", @class="form-control"})
         <label for="SortByIncreaseName">Имя:</label>
         @Html.DropDownList("SortByIncreaseName", new SelectList(Enum.GetValues(typeof(CommonSort))), new { id = "SortByIncreaseName", @class = "form-control" })
         <label for="SortByIncreasePrice">Цена:</label>
@@ -55,7 +57,7 @@
 {
     <div class="row">
         <div class="col-12">
-            @Html.PageLinks(Model.PageInfo, x => Url.Action("ComponentsCatalog", new { page = x, category = Model.Category, SortByIncreasePrice = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreasePrice, SortByIncreaseName = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreaseName, SortByIncreaseProducedAt = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreaseProducedAt }))
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("ComponentsCatalog", new { page = x, category = Model.Category, SortByIncreasePrice = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreasePrice, SortByIncreaseName = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreaseName, SortByIncreaseProducedAt = ((PcComponentsFilter)Session["CurrentFilter"]).SortByIncreaseProducedAt, pageSize=Model.PageInfo.PageSize }))
         </div>
     </div>
 }

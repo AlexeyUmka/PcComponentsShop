@@ -1,0 +1,240 @@
+------Info(2019-11-08 13:10:25.5245)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:10:35.5073)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:12:41.9344)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:12:48.1573)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged in
+
+------Info(2019-11-08 13:14:35.9440)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged off
+
+------Info(2019-11-08 13:14:43.5275)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:15:00.4000)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:15:11.0572)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged in
+
+------Info(2019-11-08 13:15:23.7490)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged off
+
+------Info(2019-11-08 13:15:29.4939)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged in
+
+------Info(2019-11-08 13:15:38.2635)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:15:43.4955)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:18:16.1183)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:18:28.6369)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:19:25.5731)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:21:51.4447)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged in
+
+------Info(2019-11-08 13:23:12.0772)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:23:21.0071)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged in
+
+------Info(2019-11-08 13:24:42.7116)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged off
+
+------Info(2019-11-08 13:24:51.7761)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:25:15.8405)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:25:21.4354)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged in
+
+------Info(2019-11-08 13:25:25.8142)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged off
+
+------Info(2019-11-08 13:28:10.1252)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:29:07.5681)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:30:18.4485)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:31:59.9325)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:32:33.2817)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:36:54.0572)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:37:34.8787)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged in
+
+------Info(2019-11-08 13:38:32.2806)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:39:28.4098)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged in
+
+------Info(2019-11-08 13:41:08.3520)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:41:23.0426)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+
+------Info(2019-11-08 13:41:30.8472)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Admin
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
+
+------Info(2019-11-08 13:41:55.2684)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged in
+
+------Info(2019-11-08 13:42:11.1248)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:42:28.0353)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged in
+
+------Info(2019-11-08 13:58:14.7887)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
+
+------Info(2019-11-08 13:58:20.4754)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
+

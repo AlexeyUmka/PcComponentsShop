@@ -1,29 +1,13 @@
-------Error(2019-11-08 18:12:49.6264)DESKTOP-SS3F1NN------
+------Error(2019-11-08 14:04:29.3292)DESKTOP-SS3F1NN------
 
-Exception Type:System.ArgumentNullException |
-Exception Message:Value cannot be null.
-Parameter name: password |
-Additional Info:An exception caused by: Microsoft.AspNet.Identity.Core
-Target Cite: Boolean VerifyHashedPassword(System.String, System.String)
+Exception Type:System.NullReferenceException |
+Exception Message:Object reference not set to an instance of an object. |
+Additional Info:An exception caused by: PcComponentsShop.UI
+Target Cite: Void MoveNext()
 User Name: 
 Request: https://localhost:44374/Account/Login
 Stack Trace
-   at Microsoft.AspNet.Identity.Crypto.VerifyHashedPassword(String hashedPassword, String password)
-   at Microsoft.AspNet.Identity.PasswordHasher.VerifyHashedPassword(String hashedPassword, String providedPassword)
-   at Microsoft.AspNet.Identity.UserManager`2.<VerifyPasswordAsync>d__87.MoveNext()
---- End of stack trace from previous location where exception was thrown ---
-   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   at Microsoft.AspNet.Identity.UserManager`2.<CheckPasswordAsync>d__81.MoveNext()
---- End of stack trace from previous location where exception was thrown ---
-   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   at Microsoft.AspNet.Identity.UserManager`2.<FindAsync>d__80.MoveNext()
---- End of stack trace from previous location where exception was thrown ---
-   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
-   at PcComponentsShop.UI.Controllers.AccountController.<Login>d__5.MoveNext() in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\Controllers\AccountController.cs:line 39
+   at PcComponentsShop.UI.Controllers.AccountController.<Login>d__5.MoveNext() in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\Controllers\AccountController.cs:line 86
 --- End of stack trace from previous location where exception was thrown ---
    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
@@ -42,32 +26,33 @@ Stack Trace
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
 Usefull link 
 
-------Error(2019-11-08 18:12:56.1466)DESKTOP-SS3F1NN------
+------Error(2019-11-08 14:04:56.6025)DESKTOP-SS3F1NN------
 
-Exception Type:System.ArgumentNullException |
-Exception Message:Value cannot be null.
-Parameter name: password |
-Additional Info:An exception caused by: Microsoft.AspNet.Identity.Core
-Target Cite: Boolean VerifyHashedPassword(System.String, System.String)
+Exception Type:System.Web.Mvc.HttpAntiForgeryException |
+Exception Message:The provided anti-forgery token was meant for a different claims-based user than the current user. |
+Additional Info:An exception caused by: System.Web.WebPages
+Target Cite: Void ValidateTokens(System.Web.HttpContextBase, System.Security.Principal.IIdentity, System.Web.Helpers.AntiXsrf.AntiForgeryToken, System.Web.Helpers.AntiXsrf.AntiForgeryToken)
+User Name: Test
+Request: https://localhost:44374/Account/Login
+Stack Trace
+   at System.Web.Helpers.AntiXsrf.TokenValidator.ValidateTokens(HttpContextBase httpContext, IIdentity identity, AntiForgeryToken sessionToken, AntiForgeryToken fieldToken)
+   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext)
+   at System.Web.Helpers.AntiForgery.Validate()
+   at System.Web.Mvc.ValidateAntiForgeryTokenAttribute.OnAuthorization(AuthorizationContext filterContext)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAuthorizationFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__0(AsyncCallback asyncCallback, Object asyncState)
+Usefull link 
+
+------Error(2019-11-08 14:05:49.0941)DESKTOP-SS3F1NN------
+
+Exception Type:System.NullReferenceException |
+Exception Message:Object reference not set to an instance of an object. |
+Additional Info:An exception caused by: PcComponentsShop.UI
+Target Cite: Void MoveNext()
 User Name: 
 Request: https://localhost:44374/Account/Login
 Stack Trace
-   at Microsoft.AspNet.Identity.Crypto.VerifyHashedPassword(String hashedPassword, String password)
-   at Microsoft.AspNet.Identity.PasswordHasher.VerifyHashedPassword(String hashedPassword, String providedPassword)
-   at Microsoft.AspNet.Identity.UserManager`2.<VerifyPasswordAsync>d__87.MoveNext()
---- End of stack trace from previous location where exception was thrown ---
-   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   at Microsoft.AspNet.Identity.UserManager`2.<CheckPasswordAsync>d__81.MoveNext()
---- End of stack trace from previous location where exception was thrown ---
-   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   at Microsoft.AspNet.Identity.UserManager`2.<FindAsync>d__80.MoveNext()
---- End of stack trace from previous location where exception was thrown ---
-   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
-   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
-   at PcComponentsShop.UI.Controllers.AccountController.<Login>d__5.MoveNext() in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\Controllers\AccountController.cs:line 39
+   at PcComponentsShop.UI.Controllers.AccountController.<Login>d__5.MoveNext() in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\Controllers\AccountController.cs:line 86
 --- End of stack trace from previous location where exception was thrown ---
    at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
    at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)

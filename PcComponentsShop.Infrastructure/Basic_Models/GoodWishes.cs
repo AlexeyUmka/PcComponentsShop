@@ -1,10 +1,13 @@
 ﻿using PcComponentsShop.Domain.Core.Basic_Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PcComponentsShop.Infrastructure.Business.Basic_Models
 {
-    public class ShoppingBasket
+    public class GoodWishes
     {
         public List<Good> Goods { get; set; } = new List<Good>();
         public override string ToString()
@@ -14,15 +17,15 @@ namespace PcComponentsShop.Infrastructure.Business.Basic_Models
                 result.AppendFormat(string.Format($"+{g.ID},{g.Category}+"));
             return result.ToString();
         }
-        public static ShoppingBasket ReadFromCookie(string cookie)
+        public static GoodWishes ReadFromString(string str)
         {
             List<Good> goods = new List<Good>();
-            if (!string.IsNullOrEmpty(cookie))
+            if (!string.IsNullOrEmpty(str))
             {
                 StringBuilder id = new StringBuilder();
                 StringBuilder category = new StringBuilder();
                 bool isWriteId = true;
-                foreach (char c in cookie)
+                foreach (char c in str)
                 {
                     if (c != ',' && isWriteId)
                         id.AppendFormat(c.ToString());
@@ -42,7 +45,7 @@ namespace PcComponentsShop.Infrastructure.Business.Basic_Models
                     }
                 }
             }
-            return new ShoppingBasket() { Goods = goods };
+            return new GoodWishes() { Goods = goods };
         }
     }
 }

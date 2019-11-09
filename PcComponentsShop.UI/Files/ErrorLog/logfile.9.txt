@@ -1,0 +1,27 @@
+------Error(2019-11-06 20:49:57.8786)DESKTOP-SS3F1NN------
+
+Exception Type:System.InvalidOperationException |
+Exception Message:The view 'Wishes' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Home/Wishes.aspx
+~/Views/Home/Wishes.ascx
+~/Views/Shared/Wishes.aspx
+~/Views/Shared/Wishes.ascx
+~/Views/Home/Wishes.cshtml
+~/Views/Home/Wishes.vbhtml
+~/Views/Shared/Wishes.cshtml
+~/Views/Shared/Wishes.vbhtml |
+Additional Info:An exception caused by: System.Web.Mvc
+Target Cite: System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)
+User Name: User
+Request: https://localhost:44374/Home/Wishes
+Stack Trace
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+Usefull link 
+

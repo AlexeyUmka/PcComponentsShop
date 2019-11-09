@@ -1,0 +1,57 @@
+------Error(2019-11-05 18:26:27.6863)DESKTOP-SS3F1NN------
+
+Exception Type:System.NullReferenceException |
+Exception Message:Object reference not set to an instance of an object. |
+Additional Info:An exception caused by: PcComponentsShop.UI
+Target Cite: Boolean IsGoodAlreadyInWishes(PcComponentsShop.Domain.Core.Basic_Models.Good, System.String)
+User Name: Admin
+Request: https://localhost:44374/Catalog/ComponentsCatalog/?category=Процессоры
+Stack Trace
+   at PcComponentsShop.UI.Helpers.CatalogHelpers.IsGoodAlreadyInWishes(Good g, String userName) in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\Helpers\CatalogHelpers.cs:line 55
+   at ASP.CatalogHelpers.<>c__DisplayClass0_0.<ShowGoods>b__0(TextWriter __razor_helper_writer) in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\App_Code\CatalogHelpers.cshtml:line 28
+   at System.Web.WebPages.HelperResult.WriteTo(TextWriter writer)
+   at System.Web.WebPages.WebPageBase.Write(HelperResult result)
+   at ASP._Page_Views_Catalog_ComponentsCatalog_cshtml.Execute() in F:\MVS Projects\PcComponentsShop\PcComponentsShop.UI\Views\Catalog\ComponentsCatalog.cshtml:line 54
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+Usefull link 
+
+------Error(2019-11-05 18:35:43.5509)DESKTOP-SS3F1NN------
+
+Exception Type:System.InvalidOperationException |
+Exception Message:The view '4,Процессоры+6,Процессоры+7,Процессоры+' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Home/4,Процессоры+6,Процессоры+7,Процессоры+.aspx
+~/Views/Home/4,Процессоры+6,Процессоры+7,Процессоры+.ascx
+~/Views/Shared/4,Процессоры+6,Процессоры+7,Процессоры+.aspx
+~/Views/Shared/4,Процессоры+6,Процессоры+7,Процессоры+.ascx
+~/Views/Home/4,Процессоры+6,Процессоры+7,Процессоры+.cshtml
+~/Views/Home/4,Процессоры+6,Процессоры+7,Процессоры+.vbhtml
+~/Views/Shared/4,Процессоры+6,Процессоры+7,Процессоры+.cshtml
+~/Views/Shared/4,Процессоры+6,Процессоры+7,Процессоры+.vbhtml |
+Additional Info:An exception caused by: System.Web.Mvc
+Target Cite: System.Web.Mvc.ViewEngineResult FindView(System.Web.Mvc.ControllerContext)
+User Name: User
+Request: https://localhost:44374/Home/Wishes
+Stack Trace
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_6.<BeginInvokeAction>b__3()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass3_1.<BeginInvokeAction>b__5(IAsyncResult asyncResult)
+Usefull link 
+

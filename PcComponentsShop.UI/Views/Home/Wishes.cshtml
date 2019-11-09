@@ -1,0 +1,53 @@
+﻿@model IEnumerable<PcComponentsShop.Domain.Core.Basic_Models.Good>
+@{
+    ViewBag.Title = "Wishes";
+}
+@{
+    HttpCookie cookie = Request.Cookies["WishesAmount"];
+    int amount = 0;
+    if (Model.Count() > 0)
+    {
+        foreach (var g in Model)
+        {
+            amount++;
+            <section class="row">
+                <div class="col-md-2">
+                    <img src="@g.ImgSrc" alt="Good Image" class="w-100 h-auto" />
+                </div>
+                <div class="col-md-10 bg-light shopBasketButtonGroup">
+                    @{string goodInfo = string.Format($"+{g.ID},{g.Category}+");}
+                    <form action="/Home/AddToShopBasketFromWishes" method="post">
+                        <input type="hidden" name="id" value="@g.ID" />
+                        <input type="hidden" name="category" value="@g.Category" />
+                        <div class="bg-primary text-white rounded w-25 m-auto text-center">Цена: @g.Price Грн</div>
+                        <div>
+                            <label for="selectedGoods_@g.ID@g.Category">@g.FullName</label><br />
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success remPos"><i class="fa fa-shopping-basket"></i></button>
+                        </div>
+                    </form>
+                    <form action="/Home/Wishes" method="post">
+                        <input type="hidden" name="goodId" value="@g.ID" />
+                        <input type="hidden" name="category" value="@g.Category" />
+                        <input type="hidden" name="actionName" value="Wishes" />
+                        <input type="hidden" name="controllerName" value="Home" />
+                        <button type="submit" name="removeFromWishes" value="true" class="btn btn-danger remPos">Удалить</button>
+                    </form>
+                </div>
+            </section>
+            <hr />
+        }
+    }
+    else
+    {
+        <div class="text-center alert-info">
+            <b>@User.Identity.Name</b>, ваш список желаний пуст.
+        </div>
+    }
+    if (cookie != null)
+    {
+        cookie["WishesAmount"] = amount.ToString();
+        Response.Cookies.Add(cookie);
+    }
+}

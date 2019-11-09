@@ -10,9 +10,9 @@
         {
             if (cookie != null && !string.IsNullOrEmpty(cookie["ShoppingBasket"]))
             {
-                if (cookie["ShoppingBasket"].Contains(string.Format($"{g.ID},{g.Category}+")))
+                if (cookie["ShoppingBasket"].Contains(string.Format($"+{g.ID},{g.Category}+")))
                 {
-                    newInfo += string.Format($"{g.ID},{g.Category}+");
+                    newInfo += string.Format($"+{g.ID},{g.Category}+");
                 }
             }
             <section class="row">
@@ -20,7 +20,7 @@
                     <img src="@g.ImgSrc" alt="Good Image" class="w-100 h-auto"/>
                 </div>
                 <div class="col-md-10 bg-light shopBasketButtonGroup">
-                    @{string goodInfo = string.Format($"{g.ID},{g.Category}+");}
+                    @{string goodInfo = string.Format($"+{g.ID},{g.Category}+");}
                     <input type="hidden" name="id" value="@g.ID" />
                     <input type="hidden" name="category" value="@g.Category" />
                     <input type="hidden" name="actionName" value="ShopBasket" />
@@ -31,8 +31,8 @@
                         <label for="selectedGoods_@g.ID@g.Category">@g.FullName</label><br />
                     </div>
                     <div>
-                        @Html.ActionLink("Купить", "CreateRegisteredOrder", new { goodId = g.ID, category = g.Category }, new { @class = "btn btn-success" })
-                        <button type="submit" name="isRemoveFromBasket" value="true" class="btn btn-danger">Удалить</button>
+                        @Html.ActionLink("Купить", "CreateRegisteredOrder", new { goodId = g.ID, category = g.Category }, new { @class = "btn btn-success remPos" })
+                        <button type="submit" name="isRemoveFromBasket" value="true" class="btn btn-danger remPos">Удалить</button>
                     </div>
                 </div>
             </section>
@@ -46,7 +46,7 @@
         }
         else
         {
-            <div class="alert-warning">
+            <div class="text-center alert-info">
                 Ваша корзина пуста. Либо вы не добавили товар, либо у вас отключены cookie, пожалуйста включите их для корректной работы сайта)
             </div>
         }

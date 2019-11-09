@@ -1,10 +1,10 @@
-------Info(2019-10-28 20:09:29.2881)DESKTOP-SS3F1NN------
+------Info(2019-11-08 11:18:00.7075)DESKTOP-SS3F1NN------
 
 The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
-Identity Info: auth:ApplicationCookie:Alexey
-Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged off
+Identity Info: auth:ApplicationCookie:User
+Additional Info:Account wiht name:User; and id:a7db666c-a486-4a65-9d14-20d9399f6602 has been successfuly logged off
 
-------Info(2019-10-28 20:09:40.2366)DESKTOP-SS3F1NN------
+------Info(2019-11-08 11:18:08.5610)DESKTOP-SS3F1NN------
 
 The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
 Identity Info: notauth::

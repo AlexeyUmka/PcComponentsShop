@@ -127,8 +127,9 @@ a.categoryButton {
 }
 
 .goodBuyPrice {
-    background-color: #F3F5E1;
-    color: #479600;
+    border: 1px dashed gray;
+    border-radius: 5px;
+    color:green;
     margin: 0;
     font-size: 1.2em;
     position: absolute;
@@ -141,6 +142,19 @@ a.categoryButton {
     right: 0;
     bottom: 0;
     margin: 5px;
+}
+.wishesButton {
+    border: none;
+    border-radius: 2px;
+    color: #28A745;
+    position: absolute;
+    right:0;
+    top:0;
+    margin: 5px;
+}
+.wishesButton:hover{
+    transition: 1s;
+    transform: scale(1.05);
 }
 
 .goodCard .card-body {
