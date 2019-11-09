@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.Owin;
+using PcComponentsShop.UI.Helpers;
 using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels;
 using PcComponentsShop.Infrastructure.Business.ActionValidators;
@@ -21,7 +22,7 @@ namespace PcComponentsShop.UI.Controllers
     {
         public PcComponentsUnit pcComponentsUnit;
 
-        delegate void HomeInfoEvents (string message);
+        delegate void HomeInfoEvents(string message);
 
         event HomeInfoEvents OrderInfoEvent = MvcApplication.AppInfoLogger.Info;
 
@@ -66,7 +67,7 @@ namespace PcComponentsShop.UI.Controllers
             }
             return RedirectToActionPermanent("Orders");
         }
-        
+
         [Authorize(Roles = "Administrators, Users")]
         public async Task<ActionResult> CreateRegisteredOrder(int[] goodId, string[] category, string ids = null, string ctgrs = null)
         {
@@ -84,7 +85,7 @@ namespace PcComponentsShop.UI.Controllers
                 OrderValidators.AllGoods = pcComponentsUnit.GetGoodsDependsOnCategory(category[i]);
 
                 HttpCookie cookieReq = Request.Cookies["ShoppingBasket"];
-                string findItem = string.Format($"{goodId[i]},{category[i]}+");
+                string findItem = string.Format($"+{goodId[i]},{category[i]}+");
 
                 if (cookieReq != null && cookieReq["ShoppingBasket"].Contains(findItem))
                 {
@@ -111,7 +112,7 @@ namespace PcComponentsShop.UI.Controllers
             }
             return RedirectToActionPermanent("Orders");
         }
-
+        [HttpGet]
         public async Task<ActionResult> ShopBasket()
         {
             AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
@@ -129,7 +130,7 @@ namespace PcComponentsShop.UI.Controllers
                 };
                 Response.Cookies.Add(cookie);
             }
-            else if(cookieReq != null && f && string.IsNullOrEmpty(currUser.GoodsInBasket))
+            else if (cookieReq != null && f && string.IsNullOrEmpty(currUser.GoodsInBasket))
             {
                 currUser.GoodsInBasket = cookieReq["ShoppingBasket"];
                 shoppingBasket = ShoppingBasket.ReadFromCookie(cookieReq["ShoppingBasket"]);
@@ -141,7 +142,7 @@ namespace PcComponentsShop.UI.Controllers
                 }
                 await UserManager.UpdateAsync(currUser);
             }
-            else if(cookieReq != null && f && !string.IsNullOrEmpty(currUser.GoodsInBasket))
+            else if (cookieReq != null && f && !string.IsNullOrEmpty(currUser.GoodsInBasket))
             {
                 shoppingBasket = ShoppingBasket.ReadFromCookie(currUser.GoodsInBasket);
                 cookieReq["ShoppingBasket"] = currUser.GoodsInBasket;
@@ -208,7 +209,7 @@ namespace PcComponentsShop.UI.Controllers
                 HttpCookie cookieReq = Request.Cookies["ShoppingBasket"];
                 if (cookieReq != null)
                 {
-                    string newCookie = cookieReq["ShoppingBasket"].Replace(string.Format($"{id},{category}+"), "");
+                    string newCookie = cookieReq["ShoppingBasket"].Replace(string.Format($"+{id},{category}+"), "");
                     cookieReq["ShoppingBasket"] = newCookie;
                     Response.Cookies.Add(cookieReq);
                     if (f)
@@ -226,6 +227,85 @@ namespace PcComponentsShop.UI.Controllers
                 await UserManager.UpdateAsync(currUser);
             if (string.IsNullOrEmpty(actionName) || string.IsNullOrEmpty(controllerName))
                 return RedirectToActionPermanent("ComponentsCatalog", "Catalog", new { category, page });
+            else
+                return RedirectToActionPermanent(actionName, controllerName);
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> AddToShopBasketFromWishes(int id, string category)
+        {
+            AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
+
+            HttpCookie cookie = Request.Cookies["ShoppingBasket"];
+            if (cookie != null && !CatalogHelpers.IsGoodAlreadyInBasket(cookie["ShoppingBasket"], new Good() { ID = id, Category = category }))
+            {
+                currUser.GoodsWishes = currUser.GoodsWishes.Replace($"+{id},{category}+", "");
+                currUser.GoodsInBasket += string.Format($"+{id},{category}+");
+                await UserManager.UpdateAsync(currUser);
+
+                cookie["ShoppingBasket"] = currUser.GoodsInBasket;
+                Response.Cookies.Add(cookie);
+
+                cookie = Request.Cookies["WishesAmount"];
+                if (cookie != null)
+                {
+                    cookie["WishesAmount"] = (currUser.GoodsWishes.Where(c => c == '+').Count() / 2).ToString();
+                    Response.Cookies.Add(cookie);
+                }
+
+                return RedirectToActionPermanent("Wishes");
+            }
+            else
+                return RedirectToActionPermanent("Wishes");
+        }
+        [Authorize]
+        public async Task<ActionResult> Wishes()
+        {
+            AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            List<Good> gds = new List<Good>();
+            foreach (var g in GoodWishes.ReadFromString(currUser.GoodsWishes).Goods)
+            {
+                Good gInDb = pcComponentsUnit.GetGoodsDependsOnCategory(g.Category).FirstOrDefault(gd => gd.ID == g.ID);
+                if (gInDb != null)
+                    gds.Add(gInDb);
+                else
+                    currUser.GoodsWishes=currUser.GoodsWishes.Replace($"+{g.ID},{g.Category}+", "");
+            }
+            await UserManager.UpdateAsync(currUser);
+            return View(gds);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> Wishes(int goodId, string category, int page = 1, string actionName = "", string controllerName = "", bool addToWishes = false, bool removeFromWishes = false)
+        {
+            AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
+            Good g = pcComponentsUnit.GetGoodsDependsOnCategory(category).FirstOrDefault(i => i.ID == goodId);
+            if (g != null)
+            {
+                if (currUser != null)
+                {
+                    bool f = false;
+                    if (addToWishes)
+                    {
+                        if (currUser.GoodsWishes == null)
+                            currUser.GoodsWishes = "";
+                        currUser.GoodsWishes += string.Format($"+{goodId},{category}+");
+                        f = true;
+                    }
+                    else if (removeFromWishes && !string.IsNullOrEmpty(currUser.GoodsWishes))
+                    {
+                        currUser.GoodsWishes = currUser.GoodsWishes.Replace($"+{goodId},{category}+", "");
+                        f = true;
+                    }
+                    if (f)
+                        await UserManager.UpdateAsync(currUser);
+                }
+            }
+            HttpCookie cookie = Request.Cookies.Get("WishesAmount") ?? new HttpCookie("WishesAmount");
+            cookie["WishesAmount"] = (currUser.GoodsWishes.Where(c => c == '+').Count()/2).ToString();
+            Response.Cookies.Add(cookie);
+            if (string.IsNullOrEmpty(actionName) || string.IsNullOrEmpty(controllerName))
+                return RedirectToActionPermanent("ComponentsCatalog", "Catalog", new { page, category });
             else
                 return RedirectToActionPermanent(actionName, controllerName);
         }

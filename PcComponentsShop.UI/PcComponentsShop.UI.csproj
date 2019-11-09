@@ -305,6 +305,7 @@
     <Content Include="Views\Account\BlockInformation.cshtml" />
     <Content Include="Views\Shared\_Exception.cshtml" />
     <Content Include="Views\Exception\NotFoundException.cshtml" />
+    <Content Include="Views\Home\Wishes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

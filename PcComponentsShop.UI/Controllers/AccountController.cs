@@ -49,7 +49,7 @@ namespace PcComponentsShop.UI.Controllers
                         ModelState.AddModelError("", $"Ваш аккаунт заблокирован в целях безопасноти, до {currUser.LockoutEndDateUtc.Value}");
                         UserManager.ResetAccessFailedCount(currUser.Id);
                     }
-                    else if (UserManager.MaxFailedAccessAttemptsBeforeLockout <= currUser.AccessFailedCount+1)
+                    else if (UserManager.MaxFailedAccessAttemptsBeforeLockout <= currUser.AccessFailedCount + 1)
                     {
                         currUser.LockoutEndDateUtc = DateTime.UtcNow.AddMinutes(1);
                         await UserManager.UpdateAsync(currUser);
@@ -75,6 +75,21 @@ namespace PcComponentsShop.UI.Controllers
                 {
                     IsPersistent = true
                 }, ident);
+
+                HttpCookie cookie = new HttpCookie("ShoppingBasket");
+                if (Request.Cookies["ShoppingBasket"] == null || string.IsNullOrEmpty(Request.Cookies["ShoppingBasket"]["ShoppingBasket"]) || !string.IsNullOrEmpty(user.GoodsInBasket))
+                {
+                    cookie["ShoppingBasket"] = user.GoodsInBasket;
+                    Response.Cookies.Add(cookie);
+                }
+                cookie = new HttpCookie("WishesAmount");
+                if (!string.IsNullOrEmpty(user.GoodsWishes))
+                {
+                    cookie["WishesAmount"] = (user.GoodsWishes.ToCharArray().Where(c => c == '+').Count()/2).ToString();
+                    Response.Cookies.Add(cookie);
+                }
+
+
                 AccountInfoEvent($"Account wiht name:{user.UserName}; and id:{user.Id} has been successfuly logged in");
                 if (!string.IsNullOrEmpty(returnUrl))
                     return Redirect(returnUrl);
@@ -88,6 +103,10 @@ namespace PcComponentsShop.UI.Controllers
         public ActionResult LogOff()
         {
             AuthManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            HttpCookie cookie = new HttpCookie("ShoppingBasket");
+            HttpCookie cookie2 = new HttpCookie("WishesAmount");
+            Response.Cookies.Add(cookie);
+            Response.Cookies.Add(cookie2);
             AccountInfoEvent($"Account wiht name:{User.Identity.Name}; and id:{User.Identity.GetUserId()} has been successfuly logged off");
             return RedirectToAction("Index", "Home");
         }

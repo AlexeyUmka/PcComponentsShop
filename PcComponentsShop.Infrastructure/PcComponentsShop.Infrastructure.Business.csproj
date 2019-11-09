@@ -53,6 +53,7 @@
     <Compile Include="Basic_Actions\OrdersManipulator.cs" />
     <Compile Include="Basic_Models\Order.cs" />
     <Compile Include="Basic_Models\ShoppingBasket.cs" />
+    <Compile Include="Basic_Models\GoodWishes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
