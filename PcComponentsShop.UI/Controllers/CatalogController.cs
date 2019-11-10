@@ -1,6 +1,7 @@
 ﻿using PcComponentsShop.Domain.Core.Basic_Models;
 using PcComponentsShop.Infrastructure.Data.Filters;
 using PcComponentsShop.Infrastructure.Data.Units;
+using PcComponentsShop.UI.Controllers.Filters;
 using PcComponentsShop.UI.Models;
 using System.Collections.Generic;
 using System.Web;
@@ -15,7 +16,7 @@ namespace PcComponentsShop.UI.Controllers
         {
             componentsUnit = MvcApplication.PcComponentsUnit;
         }
-
+        [RefuseLockedUsers]
         [HttpGet]
         public ActionResult ComponentsCatalog(string[] Brands, string returnUrl, CommonSort SortByIncreaseName = CommonSort.Нет, CommonSort SortByIncreasePrice = CommonSort.Нет, CommonSort SortByIncreaseProducedAt = CommonSort.Нет, string category = "Процессоры", int? minPrice = null, int? maxPrice = null, int page = 1, int pageSize = 0)
         {

@@ -2,6 +2,9 @@
 
 namespace PcComponentsShop.Domain.Core.Basic_Models
 {
+    /// <summary>
+    /// Inherits from Good
+    /// </summary>
     public class VideoCard : Good
     {
         [Required]

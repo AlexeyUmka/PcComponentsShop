@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace PcComponentsShop.Infrastructure.Business.Basic_Models
 {
+    /// <summary>
+    /// It's the helper class for work with Goods in Wishes
+    /// </summary>
     public class GoodWishes
     {
         public List<Good> Goods { get; set; } = new List<Good>();

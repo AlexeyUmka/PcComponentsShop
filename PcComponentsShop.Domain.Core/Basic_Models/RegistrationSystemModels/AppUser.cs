@@ -2,6 +2,9 @@
 
 namespace PcComponentsShop.Domain.Core.Basic_Models.RegistrationSystemModels
 {
+    /// <summary>
+    /// Inherits from IdentitiyUser, it's a custom realization of this class
+    /// </summary>
     public class AppUser : IdentityUser
     {
         public string GoodsInBasket { get; set; }

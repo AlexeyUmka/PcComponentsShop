@@ -4,6 +4,10 @@ using System.Linq;
 
 namespace PcComponentsShop.Infrastructure.Business.ActionValidators
 {
+    /// <summary>
+    /// Represents a validation static class, which validate Order.
+    /// !Important! Before invoke IsValidOrder you should assign a value to AllGoods and UserName
+    /// </summary>
     public static class OrderValidators
     {
         public static IEnumerable<Good> AllGoods { get; set; }

@@ -4,6 +4,9 @@ using System;
 
 namespace PcComponentsShop.Infrastructure.Business.Basic_Actions
 {
+    /// <summary>
+    /// Allows to finish Order creation
+    /// </summary>
     public static class OrdersManipulator
     {
         public static Order CreateAndReturnNewOrder(string userName, Good good, Func<string, Good,int, bool> IsValidOrder, OrderStatus orderStatus = OrderStatus.Registered, int goodAmount = 1)

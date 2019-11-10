@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace PcComponentsShop.Infrastructure.Data.Units
 {
+    /// <summary>
+    /// Unit of work Pattern. Allow us to get access to repositories.
+    /// </summary>
     public class PcComponentsUnit : IDisposable
     {
         private PcComponentsShopContext db = new PcComponentsShopContext();

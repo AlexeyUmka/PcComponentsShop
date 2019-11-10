@@ -10,6 +10,9 @@ namespace PcComponentsShop.Infrastructure.Business.Basic_Models
         Finished,
         Canceled
     }
+    /// <summary>
+    /// Basic representation of Order object with Data Annotations
+    /// </summary>
     public class Order
     {
         public int OrderId { get; set; }

@@ -7,6 +7,10 @@ using System.Linq;
 
 namespace PcComponentsShop.Infrastructure.Data.Repositories
 {
+    /// <summary>
+    /// Generic abstract realization of FilteredRepository with elements type which inherit from Good
+    /// </summary>
+    /// <typeparam name="T">Elements Type of repository</typeparam>
     public abstract class PcComponentsRepository<T> : IFilteredPcComponentsRepository<T> where T:Good
     {
         protected PcComponentsShopContext db;

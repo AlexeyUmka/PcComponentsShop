@@ -4,6 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PcComponentsShop.Domain.Core.Basic_Models
 {
+    /// <summary>
+    /// Represents a CreateUser model for view(fields set with data annotations)
+    /// </summary>
     public class CreateUserViewModel
     {
         [Required]
@@ -15,6 +18,9 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Required]
         public string Password { get; set; }
     }
+    /// <summary>
+    /// Represents a Login model for view(fields set with data annotations)
+    /// </summary>
     public class LoginViewModel
     {
         [Required]
@@ -23,13 +29,18 @@ namespace PcComponentsShop.Domain.Core.Basic_Models
         [Required]
         public string Password { get; set; }
     }
+    /// <summary>
+    /// Represents a RoleEdit model for view(fields set with data annotations)
+    /// </summary>
     public class RoleEditModel
     {
         public AppRole Role { get; set; }
         public IEnumerable<AppUser> Members { get; set; }
         public IEnumerable<AppUser> NonMembers { get; set; }
     }
-
+    /// <summary>
+    /// Represents a RoleModification model for view(fields set with data annotations)
+    /// </summary>
     public class RoleModificationModel
     {
         [Required]
