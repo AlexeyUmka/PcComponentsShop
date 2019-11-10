@@ -4,6 +4,9 @@ using System.Text;
 
 namespace PcComponentsShop.Infrastructure.Business.Basic_Models
 {
+    /// <summary>
+    /// It's the helper class for work with Goods in Wishes
+    /// </summary>
     public class ShoppingBasket
     {
         public List<Good> Goods { get; set; } = new List<Good>();

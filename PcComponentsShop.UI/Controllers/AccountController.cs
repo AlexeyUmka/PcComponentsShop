@@ -15,7 +15,6 @@ using System.Web.Mvc;
 namespace PcComponentsShop.UI.Controllers
 {
     [Authorize]
-    [RefuseLockedUsers]
     public class AccountController : Controller
     {
         delegate void AccountInfoEvents(string message);
@@ -36,8 +35,13 @@ namespace PcComponentsShop.UI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel details, string returnUrl)
         {
-            AppUser user = await UserManager.FindAsync(details.Name, details.Password);
-            AppUser currUser = UserManager.Users.FirstOrDefault(u => u.UserName == details.Name);
+            AppUser user= null;
+            AppUser currUser = null;
+            if (!string.IsNullOrEmpty(details.Name) && !string.IsNullOrEmpty(details.Password))
+            {
+                user = await UserManager.FindAsync(details.Name, details.Password);
+                currUser = UserManager.Users.FirstOrDefault(u => u.UserName == details.Name);
+            }
             if ((user == null) || (currUser != null && UserManager.IsLockedOut(currUser.Id)))
             {
                 if (currUser != null)
@@ -63,7 +67,7 @@ namespace PcComponentsShop.UI.Controllers
                     }
                 }
                 else
-                    ModelState.AddModelError("", "Некорректное имя.");
+                    ModelState.AddModelError("", "Некорректное имя или пароль.");
             }
             else
             {

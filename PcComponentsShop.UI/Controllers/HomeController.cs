@@ -17,7 +17,6 @@ using System.Web.Mvc;
 
 namespace PcComponentsShop.UI.Controllers
 {
-    [RefuseLockedUsers]
     public class HomeController : Controller
     {
         public PcComponentsUnit pcComponentsUnit;
@@ -30,18 +29,19 @@ namespace PcComponentsShop.UI.Controllers
         {
             pcComponentsUnit = MvcApplication.PcComponentsUnit;
         }
-
+        [RefuseLockedUsers]
         public ActionResult Index()
         {
             return View();
         }
+        [RefuseLockedUsers]
         [Authorize(Roles = "Administrators, Users")]
         public ActionResult Orders()
         {
             return View(pcComponentsUnit.Orders.GetAll().Where(o => o.UserName == User.Identity.Name));
 
         }
-
+        [RefuseLockedUsers]
         [Authorize(Roles = "Administrators, Users")]
         public ActionResult ChangeOrderStatus(int orderId, int goodAmount, bool IsPay = false, bool IsCancel = false, bool IsEnd = false)
         {
@@ -67,7 +67,7 @@ namespace PcComponentsShop.UI.Controllers
             }
             return RedirectToActionPermanent("Orders");
         }
-
+        [RefuseLockedUsers]
         [Authorize(Roles = "Administrators, Users")]
         public async Task<ActionResult> CreateRegisteredOrder(int[] goodId, string[] category, string ids = null, string ctgrs = null)
         {
@@ -112,6 +112,7 @@ namespace PcComponentsShop.UI.Controllers
             }
             return RedirectToActionPermanent("Orders");
         }
+        [RefuseLockedUsers]
         [HttpGet]
         public async Task<ActionResult> ShopBasket()
         {
@@ -167,6 +168,7 @@ namespace PcComponentsShop.UI.Controllers
             return View(goods);
         }
         [HttpPost]
+        [RefuseLockedUsers]
         public async Task<ActionResult> ShopBasket(int id, string category, string actionName, string controllerName, bool removeSelected = false, bool buySelected = false, string[] selectedGoods = null, int page = 1, bool isRemoveFromBasket = false)
         {
             AppUser currUser = await UserManager.FindByNameAsync(User.Identity.Name);
@@ -230,6 +232,7 @@ namespace PcComponentsShop.UI.Controllers
             else
                 return RedirectToActionPermanent(actionName, controllerName);
         }
+        [RefuseLockedUsers]
         [HttpPost]
         [Authorize]
         public async Task<ActionResult> AddToShopBasketFromWishes(int id, string category)
@@ -258,6 +261,7 @@ namespace PcComponentsShop.UI.Controllers
             else
                 return RedirectToActionPermanent("Wishes");
         }
+        [RefuseLockedUsers]
         [Authorize]
         public async Task<ActionResult> Wishes()
         {
@@ -274,6 +278,7 @@ namespace PcComponentsShop.UI.Controllers
             await UserManager.UpdateAsync(currUser);
             return View(gds);
         }
+        [RefuseLockedUsers]
         [Authorize]
         [HttpPost]
         public async Task<ActionResult> Wishes(int goodId, string category, int page = 1, string actionName = "", string controllerName = "", bool addToWishes = false, bool removeFromWishes = false)

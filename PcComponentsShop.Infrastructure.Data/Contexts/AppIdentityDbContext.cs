@@ -6,6 +6,9 @@ using System.Data.Entity;
 
 namespace PcComponentsShop.Infrastructure.Data.Contexts
 {
+    /// <summary>
+    /// Custom realization of IdentityDbContext to work with AppUser type
+    /// </summary>
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
         public AppIdentityDbContext() : base("AppIdentityDbContext") { }
@@ -20,6 +23,9 @@ namespace PcComponentsShop.Infrastructure.Data.Contexts
             return new AppIdentityDbContext();
         }
     }
+    /// <summary>
+    /// Database initializer for AppIdentityDbContext with basic filling
+    /// </summary>
     public class IdentityDbInit : CreateDatabaseIfNotExists<AppIdentityDbContext>
     {
         protected override void Seed(AppIdentityDbContext context)

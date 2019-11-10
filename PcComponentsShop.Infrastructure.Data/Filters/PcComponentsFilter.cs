@@ -12,7 +12,9 @@ namespace PcComponentsShop.Infrastructure.Data.Filters
         Возрастание,
         Убывание,
     }
-  
+    /// <summary>
+    /// Custom realization of IPcComponentsRepositoryFilter
+    /// </summary>
     public class PcComponentsFilter : IPcComponentsRepositoryFilter
     {
         public int? MinPrice { get; set; }

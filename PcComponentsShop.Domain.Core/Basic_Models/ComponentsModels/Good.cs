@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PcComponentsShop.Domain.Core.Basic_Models
 {
+    /// <summary>
+    /// Basic representation of good in current shop
+    /// </summary>
     public class Good
     {
         [Key]
