@@ -1,72 +1,39 @@
-------Info(2019-11-10 12:20:14.8485)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
-Identity Info: notauth::
-Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
-
-------Info(2019-11-10 12:20:36.0558)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
-Identity Info: auth:ApplicationCookie:Admin
-Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
-
-------Info(2019-11-10 12:20:42.6720)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
-Identity Info: notauth::
-Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
-
-------Info(2019-11-10 12:20:52.6835)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
-Identity Info: auth:ApplicationCookie:Admin
-Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
-
-------Info(2019-11-10 12:20:59.7688)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
-Identity Info: notauth::
-Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
-
-------Info(2019-11-10 12:21:16.7428)DESKTOP-SS3F1NN------
+------Info(2019-11-11 17:05:28.4864)DESKTOP-SS3F1NN------
 
 The call cite PcComponentsShop.UI.Controllers.HomeController+<CreateRegisteredOrder>d__9.MoveNext
 Identity Info: auth:ApplicationCookie:Admin
-Additional Info:Order(67) has been created and registered
+Additional Info:Order(69) has been created and registered
 Owner name:Admin
-GoodId: 2 Price: 1599
+GoodId: 3 Price: 3909
 
-------Info(2019-11-10 12:21:21.3753)DESKTOP-SS3F1NN------
+------Info(2019-11-11 17:05:31.5120)DESKTOP-SS3F1NN------
 
 The call cite PcComponentsShop.UI.Controllers.HomeController.ChangeOrderStatus
 Identity Info: auth:ApplicationCookie:Admin
-Additional Info:Order(67) status has been changed to Paid
+Additional Info:Order(69) status has been changed to Paid
 Owner name:Admin
 
-------Info(2019-11-10 12:21:38.2540)DESKTOP-SS3F1NN------
+------Info(2019-11-11 17:09:26.6812)DESKTOP-SS3F1NN------
 
 The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
 Identity Info: auth:ApplicationCookie:Admin
 Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged off
 
-------Info(2019-11-10 12:24:26.3227)DESKTOP-SS3F1NN------
+------Info(2019-11-11 17:33:33.8258)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
+Identity Info: notauth::
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged in
+
+------Info(2019-11-11 17:42:04.8007)DESKTOP-SS3F1NN------
+
+The call cite PcComponentsShop.UI.Controllers.AccountController.LogOff
+Identity Info: auth:ApplicationCookie:Alexey
+Additional Info:Account wiht name:Alexey; and id:9887a5a0-5ea4-4f52-b546-62615fc7835a has been successfuly logged off
+
+------Info(2019-11-11 17:42:15.1771)DESKTOP-SS3F1NN------
 
 The call cite PcComponentsShop.UI.Controllers.AccountController+<Login>d__5.MoveNext
 Identity Info: notauth::
 Additional Info:Account wiht name:Admin; and id:1d0dbf3f-2a95-4650-ba08-427461e24205 has been successfuly logged in
-
-------Info(2019-11-10 12:27:16.0016)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.HomeController+<CreateRegisteredOrder>d__9.MoveNext
-Identity Info: auth:ApplicationCookie:Admin
-Additional Info:Order(68) has been created and registered
-Owner name:Admin
-GoodId: 6 Price: 5749
-
-------Info(2019-11-10 12:27:26.6255)DESKTOP-SS3F1NN------
-
-The call cite PcComponentsShop.UI.Controllers.HomeController.ChangeOrderStatus
-Identity Info: auth:ApplicationCookie:Admin
-Additional Info:Order(68) status has been changed to Canceled
-Owner name:Admin
 

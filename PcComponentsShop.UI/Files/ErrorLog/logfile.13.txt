@@ -1,4 +1,4 @@
-------Error(2019-11-11 17:02:39.1800)DESKTOP-SS3F1NN------
+------Error(2019-11-11 16:59:22.2530)DESKTOP-SS3F1NN------
 
 Exception Type:System.Web.HttpRequestValidationException |
 Exception Message:A potentially dangerous Request.Form value was detected from the client (Model="<p>LOL</p>"). |
